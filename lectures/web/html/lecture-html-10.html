@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DevSkillRoad — Формы в HTML</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+</head>
+
+<body>
+    <div class="header">
+        <a href="/index.html" class="logo-link">
+            <div class="logo-image"></div>
+        </a>
+        <a href="/index.html" class="title-link">
+            <div class="title">
+                <h1>DevSkillRoad</h1>
+            </div>
+        </a>
+    </div>
+
+    <div class="content">
+        <div class="lecture-nav">
+            <a href="/lectures/web/html/lecture-html-9.html" class="prev">← Таблицы</a>
+            <span class="next disabled">Следующая лекция →</span>
+        </div>
+
+        <h1 class="lecture-title">Формы в HTML</h1>
+        
+        <div class="lecture-meta">
+            📝 Теги form, input, button, select, textarea, label
+        </div>
+
+        <div class="lecture-content">
+            <p>Формы нужны для того, чтобы пользователь мог отправить данные на сервер: логин, поиск, обратную связь, регистрацию.</p>
+
+            <h2>1. Контейнер формы — &lt;form&gt;</h2>
+            <p>Все элементы формы должны быть внутри <code>&lt;form&gt;</code>.</p>
+
+            <pre><code>&lt;form&gt;
+    ... поля формы ...
+&lt;/form&gt;</code></pre>
+
+            <h2>2. Подпись к полю — &lt;label&gt;</h2>
+            <p>Тег <code>&lt;label&gt;</code> связывает текст с полем. При клике на текст фокус переходит в поле.</p>
+
+            <pre><code>&lt;label for="username"&gt;Имя пользователя:&lt;/label&gt;
+&lt;input type="text" id="username"&gt;</code></pre>
+
+            <p><strong>Как это выглядит в браузере:</strong></p>
+            <div class="live-example">
+                <form>
+                    <label for="demo-username">Имя пользователя:</label>
+                    <input type="text" id="demo-username">
+                </form>
+            </div>
+
+            <div class="lecture-note">
+                📌 Атрибут <code>for</code> в <code>&lt;label&gt;</code> должен совпадать с <code>id</code> поля. Это связывает их.
+            </div>
+
+            <h2>3. Текстовые поля — &lt;input type="text"&gt;</h2>
+            <p>Однострочное текстовое поле. Атрибут <code>placeholder</code> показывает подсказку внутри поля.</p>
+
+            <pre><code>&lt;label for="name"&gt;Ваше имя:&lt;/label&gt;
+&lt;input type="text" id="name" placeholder="Иван"&gt;</code></pre>
+
+            <p><strong>Как это выглядит в браузере:</strong></p>
+            <div class="live-example">
+                <form>
+                    <label for="demo-name">Ваше имя:</label>
+                    <input type="text" id="demo-name" placeholder="Иван">
+                </form>
+            </div>
+
+            <h2>4. Поле пароля — &lt;input type="password"&gt;</h2>
+            <p>Символы скрываются звёздочками или точками.</p>
+
+            <pre><code>&lt;label for="pwd"&gt;Пароль:&lt;/label&gt;
+&lt;input type="password" id="pwd"&gt;</code></pre>
+
+            <p><strong>Как это выглядит в браузере:</strong></p>
+            <div class="live-example">
+                <form>
+                    <label for="demo-pwd">Пароль:</label>
+                    <input type="password" id="demo-pwd">
+                </form>
+            </div>
+
+            <h2>5. Электронная почта — &lt;input type="email"&gt;</h2>
+            <p>Браузер проверяет, похоже ли значение на email (должна быть @ и точка).</p>
+
+            <pre><code>&lt;label for="email"&gt;Email:&lt;/label&gt;
+&lt;input type="email" id="email"&gt;</code></pre>
+
+            <p><strong>Как это выглядит в браузере:</strong></p>
+            <div class="live-example">
+                <form>
+                    <label for="demo-email">Email:</label>
+                    <input type="email" id="demo-email">
+                </form>
+            </div>
+
+            <h2>6. Многострочное поле — &lt;textarea&gt;</h2>
+            <p>Для длинного текста, комментариев, описаний.</p>
+
+            <pre><code>&lt;label for="comment"&gt;Комментарий:&lt;/label&gt;
+&lt;textarea id="comment" rows="4" cols="40"&gt;&lt;/textarea&gt;</code></pre>
+
+            <p><strong>Как это выглядит в браузере:</strong></p>
+            <div class="live-example">
+                <form>
+                    <label for="demo-comment">Комментарий:</label>
+                    <textarea id="demo-comment" rows="3" cols="30"></textarea>
+                </form>
+            </div>
+
+            <h2>7. Выпадающий список — &lt;select&gt; и &lt;option&gt;</h2>
+            <p>Позволяет выбрать один вариант из нескольких.</p>
+
+            <pre><code>&lt;label for="city"&gt;Город:&lt;/label&gt;
+&lt;select id="city"&gt;
+    &lt;option&gt;Москва&lt;/option&gt;
+    &lt;option&gt;СПб&lt;/option&gt;
+    &lt;option&gt;Казань&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+
+            <p><strong>Как это выглядит в браузере:</strong></p>
+            <div class="live-example">
+                <form>
+                    <label for="demo-city">Город:</label>
+                    <select id="demo-city">
+                        <option>Москва</option>
+                        <option>СПб</option>
+                        <option>Казань</option>
+                    </select>
+                </form>
+            </div>
+
+            <h2>8. Флажок — &lt;input type="checkbox"&gt;</h2>
+            <p>Можно выбрать несколько вариантов или согласиться с условиями.</p>
+
+            <pre><code>&lt;input type="checkbox" id="agree"&gt;
+&lt;label for="agree"&gt;Согласен с условиями&lt;/label&gt;</code></pre>
+
+            <p><strong>Как это выглядит в браузере:</strong></p>
+            <div class="live-example">
+                <form>
+                    <input type="checkbox" id="demo-agree">
+                    <label for="demo-agree">Согласен с условиями</label>
+                </form>
+            </div>
+
+            <h2>9. Переключатель — &lt;input type="radio"&gt;</h2>
+            <p>Выбор одного варианта из группы. У всех радиокнопок в группе одинаковый <code>name</code>.</p>
+
+            <pre><code>&lt;input type="radio" name="gender" id="male"&gt;
+&lt;label for="male"&gt;Мужской&lt;/label&gt;
+&lt;input type="radio" name="gender" id="female"&gt;
+&lt;label for="female"&gt;Женский&lt;/label&gt;</code></pre>
+
+            <p><strong>Как это выглядит в браузере:</strong></p>
+            <div class="live-example">
+                <form>
+                    <input type="radio" name="gender" id="demo-male">
+                    <label for="demo-male">Мужской</label>
+                    <input type="radio" name="gender" id="demo-female">
+                    <label for="demo-female">Женский</label>
+                </form>
+            </div>
+
+            <h2>10. Кнопка отправки — &lt;input type="submit"&gt; и &lt;button&gt;</h2>
+            <p>Отправляет форму на сервер.</p>
+
+            <pre><code>&lt;input type="submit" value="Отправить"&gt;
+&lt;button type="submit"&gt;Отправить&lt;/button&gt;</code></pre>
+
+            <p><strong>Как это выглядит в браузере:</strong></p>
+            <div class="live-example">
+                <form>
+                    <input type="submit" value="Отправить">
+                    <button type="submit">Отправить</button>
+                </form>
+            </div>
+
+            <div class="lecture-note">
+                📌 Разница: <code>&lt;input type="submit"&gt;</code> может содержать только текст. <code>&lt;button&gt;</code> может содержать HTML (картинки, иконки).
+            </div>
+
+            <h2>11. Куда отправляется форма — action и method</h2>
+            <p>Когда пользователь нажимает кнопку отправки, браузер собирает все данные из полей и отправляет их на сервер.</p>
+            <ul>
+                <li><code>action</code> — адрес, куда отправлять данные (например, <code>/login.php</code> или <code>/api/submit</code>)</li>
+                <li><code>method</code> — способ отправки (<code>GET</code> или <code>POST</code>). Пока просто запомните, что <code>GET</code> — данные видны в адресной строке (для поиска), <code>POST</code> — не видны (для паролей и сообщений).</li>
+            </ul>
+
+            <pre><code>&lt;form action="/send-form.php" method="post"&gt;
+    &lt;label for="msg"&gt;Сообщение:&lt;/label&gt;
+    &lt;textarea id="msg"&gt;&lt;/textarea&gt;
+    &lt;input type="submit" value="Отправить"&gt;
+&lt;/form&gt;</code></pre>
+
+            <div class="lecture-note">
+                📌 В этом примере форма отправится на гипотетический файл <code>/send-form.php</code>, который обработает данные. Как именно писать такие обработчики — тема отдельного курса по серверному программированию (PHP, Python, Node.js).
+            </div>
+
+            <h2>12. Что нельзя делать с формами</h2>
+            <ul>
+                <li>Вкладывать формы друг в друга — запрещено.</li>
+                <li>Использовать <code>&lt;button&gt;</code> без <code>type</code> внутри формы — по умолчанию он работает как submit.</li>
+                <li>Забывать связывать <code>&lt;label&gt;</code> с полем через <code>for</code> и <code>id</code>.</li>
+            </ul>
+
+            <div class="lecture-note">
+                <strong>📓 Из тетради:</strong> «Формы — это мост между пользователем и сервером. Изучите их хорошо, потому что без форм любой сайт — просто витрина, а не инструмент».
+            </div>
+        </div>
+
+        <div class="lecture-nav">
+            <a href="/lectures/web/html/lecture-html-9.html" class="prev">← Таблицы</a>
+            <span class="next disabled">Следующая лекция →</span>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <p>📝 Весь контент — мои личные записи, комментарии и шпаргалки. Я не копирайтер, я практик.</p>
+    </div>
+</body>
+
+</html>
