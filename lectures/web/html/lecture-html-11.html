@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DevSkillRoad — Семантические теги</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+</head>
+
+<body>
+    <div class="header">
+        <a href="/index.html" class="logo-link">
+            <div class="logo-image"></div>
+        </a>
+        <a href="/index.html" class="title-link">
+            <div class="title">
+                <h1>DevSkillRoad</h1>
+            </div>
+        </a>
+    </div>
+
+    <div class="content">
+        <div class="lecture-nav">
+            <a href="/lectures/web/html/lecture-html-10.html" class="prev">← Формы</a>
+            <span class="next disabled">Следующая лекция →</span>
+        </div>
+
+        <h1 class="lecture-title">Семантические теги</h1>
+        
+        <div class="lecture-meta">
+            🧩 header, nav, main, article, section, aside, footer
+        </div>
+
+        <div class="lecture-content">
+            <p>Семантические теги (от греч. σημαντικός — «обозначающий») помогают браузеру, поисковикам и разработчикам понять структуру страницы. Они не добавляют нового визуального оформления, но делают код понятным.</p>
+
+            <h2>1. Зачем нужны семантические теги?</h2>
+            <p>Раньше все блоки делали через <code>&lt;div&gt;</code> с классами. Это работало, но ни браузер, ни поисковик не понимали, где шапка, где меню, где основное содержание. Семантические теги решают эту проблему.</p>
+
+            <div class="lecture-note">
+                📌 Семантические теги не меняют внешний вид. Они нужны для структуры и доступности.
+            </div>
+
+            <h2>2. &lt;header&gt; — шапка страницы или раздела</h2>
+            <p>Обычно содержит логотип, заголовок, навигацию.</p>
+            <pre><code>&lt;header&gt;
+    &lt;h1&gt;Мой сайт&lt;/h1&gt;
+    &lt;p&gt;Описание сайта&lt;/p&gt;
+&lt;/header&gt;</code></pre>
+
+            <p><strong>Как это выглядит в браузере:</strong></p>
+            <div class="live-example">
+                <header style="margin:0; padding:0; background:none;">
+                    <h1 style="margin:0; font-size:1.2rem;">Мой сайт</h1>
+                    <p style="margin:0;">Описание сайта</p>
+                </header>
+            </div>
+
+            <h2>3. &lt;nav&gt; — блок навигации</h2>
+            <p>Содержит ссылки на другие страницы или разделы.</p>
+            <pre><code>&lt;nav&gt;
+    &lt;a href="/"&gt;Главная&lt;/a&gt;
+    &lt;a href="/about"&gt;О нас&lt;/a&gt;
+    &lt;a href="/contacts"&gt;Контакты&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+
+            <p><strong>Как это выглядит в браузере:</strong></p>
+            <div class="live-example">
+                <nav style="margin:0; padding:0; background:none;">
+                    <a href="#">Главная</a> |
+                    <a href="#">О нас</a> |
+                    <a href="#">Контакты</a>
+                </nav>
+            </div>
+
+            <h2>4. &lt;main&gt; — основное содержание страницы</h2>
+            <p>Уникальный контент страницы (не повторяющийся на других страницах). Должен быть один на странице.</p>
+            <pre><code>&lt;main&gt;
+    &lt;h2&gt;Последние новости&lt;/h2&gt;
+    &lt;p&gt;Текст новости...&lt;/p&gt;
+&lt;/main&gt;</code></pre>
+
+            <h2>5. &lt;article&gt; — самостоятельная единица контента</h2>
+            <p>Статья, пост блога, новость, комментарий. Такой контент можно переиспользовать на других сайтах.</p>
+            <pre><code>&lt;article&gt;
+    &lt;h3&gt;Заголовок статьи&lt;/h3&gt;
+    &lt;p&gt;Текст статьи...&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+
+            <p><strong>Как это выглядит в браузере:</strong></p>
+            <div class="live-example">
+                <article style="margin:0; padding:0; background:none;">
+                    <h3 style="margin:0;">Заголовок статьи</h3>
+                    <p style="margin:0;">Текст статьи...</p>
+                </article>
+            </div>
+
+            <h2>6. &lt;section&gt; — логический раздел страницы</h2>
+            <p>Группирует связанный контент. Обычно имеет свой заголовок.</p>
+            <pre><code>&lt;section&gt;
+    &lt;h2&gt;Наши услуги&lt;/h2&gt;
+    &lt;p&gt;Описание услуг...&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+
+            <div class="lecture-note">
+                📌 Разница между <code>&lt;article&gt;</code> и <code>&lt;section&gt;</code>: <code>&lt;article&gt;</code> — самодостаточный контент, <code>&lt;section&gt;</code> — часть страницы. На практике их часто путают, но для начала это не критично.
+            </div>
+
+            <h2>7. &lt;aside&gt; — побочный контент</h2>
+            <p>Боковая панель, реклама, виджеты, ссылки по теме — то, что не является основным.</p>
+            <pre><code>&lt;aside&gt;
+    &lt;h4&gt;Реклама&lt;/h4&gt;
+    &lt;p&gt;Купите наш курс&lt;/p&gt;
+&lt;/aside&gt;</code></pre>
+
+            <h2>8. &lt;footer&gt; — подвал страницы или раздела</h2>
+            <p>Авторские права, контакты, ссылки на политику конфиденциальности.</p>
+            <pre><code>&lt;footer&gt;
+    &lt;p&gt;© 2026 Мой сайт&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+
+            <h2>9. Пример полной семантической структуры</h2>
+            <pre><code>&lt;body&gt;
+    &lt;header&gt;Шапка сайта&lt;/header&gt;
+    &lt;nav&gt;Навигация&lt;/nav&gt;
+    &lt;main&gt;
+        &lt;article&gt;
+            &lt;h1&gt;Статья&lt;/h1&gt;
+            &lt;section&gt;
+                &lt;h2&gt;Подраздел статьи&lt;/h2&gt;
+            &lt;/section&gt;
+        &lt;/article&gt;
+        &lt;aside&gt;Боковая панель&lt;/aside&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;Подвал&lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+
+            <h2>10. Что нельзя делать с семантическими тегами</h2>
+            <ul>
+                <li>Использовать <code>&lt;main&gt;</code> больше одного раза на странице.</li>
+                <li>Вкладывать <code>&lt;header&gt;</code> в <code>&lt;footer&gt;</code> или наоборот — это редко нужно.</li>
+                <li>Пропускать семантику, если она есть. Например, вместо <code>&lt;nav&gt;</code> использовать <code>&lt;div class="menu"&gt;</code>.</li>
+                <li>Путать <code>&lt;article&gt;</code> и <code>&lt;section&gt;</code> — это не страшно, но лучше понимать разницу.</li>
+            </ul>
+
+            <div class="lecture-note">
+                <strong>📓 Из тетради:</strong> «Семантические теги не видны глазу, но их видит поисковик и вспомогательные технологии. Не ленитесь использовать их. Это привычка профессиональной вёрстки».
+            </div>
+        </div>
+
+        <div class="lecture-nav">
+            <a href="/lectures/web/html/lecture-html-10.html" class="prev">← Формы</a>
+            <span class="next disabled">Следующая лекция →</span>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <p>📝 Весь контент — мои личные записи, комментарии и шпаргалки. Я не копирайтер, я практик.</p>
+    </div>
+</body>
+
+</html>
