@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DevSkillRoad — Изображения в HTML</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+</head>
+
+<body>
+    <div class="header">
+        <a href="/index.html" class="logo-link">
+            <div class="logo-image"></div>
+        </a>
+        <a href="/index.html" class="title-link">
+            <div class="title">
+                <h1>DevSkillRoad</h1>
+            </div>
+        </a>
+    </div>
+
+    <div class="content">
+        <div class="lecture-nav">
+            <a href="/lectures/web/html/lecture-html-7.html" class="prev">← Ссылки</a>
+            <span class="next disabled">Следующая лекция →</span>
+        </div>
+
+        <h1 class="lecture-title">Изображения в HTML</h1>
+        
+        <div class="lecture-meta">
+            🖼️ Тег &lt;img&gt;, атрибуты, форматы, подписи
+        </div>
+
+        <div class="lecture-content">
+            <p>Изображения делают страницу наглядной. В HTML для этого используется тег <code>&lt;img&gt;</code>. Это одиночный тег, он не требует закрытия.</p>
+
+            <h2>1. Простое изображение — атрибуты src и alt</h2>
+            <p><code>src</code> (source) — указывает путь к файлу изображения. <code>alt</code> (alternative text) — текст, который покажется, если изображение не загрузилось, и для экранных дикторов.</p>
+
+            <pre><code>&lt;img src="/images/logo.svg" alt="Логотип DevSkillRoad"&gt;</code></pre>
+
+            <p><strong>Как это выглядит в браузере:</strong></p>
+            <div class="live-example">
+                <img src="/images/logo.svg" alt="Логотип DevSkillRoad" width="80">
+            </div>
+
+            <div class="lecture-note">
+                📌 Атрибут <code>alt</code> обязателен. Без него изображение будет недоступно для незрячих пользователей и поисковых систем.
+            </div>
+
+            <h2>2. Размеры изображения — width и height</h2>
+            <p>Атрибуты <code>width</code> и <code>height</code> задают размер в пикселях. Браузер зарезервирует место под картинку ещё до её загрузки — страница не будет «прыгать».</p>
+
+            <pre><code>&lt;img src="/images/logo.svg" alt="Логотип" width="50" height="50"&gt;</code></pre>
+
+            <p><strong>Как это выглядит в браузере:</strong></p>
+            <div class="live-example">
+                <img src="/images/logo.svg" alt="Логотип" width="50" height="50">
+            </div>
+
+            <div class="lecture-note">
+                📌 Если задать только один атрибут (ширину или высоту), второй подстроится пропорционально. Но лучше задавать оба, чтобы браузер сразу знал размер.
+            </div>
+
+            <h2>3. Популярные форматы изображений</h2>
+            <ul>
+                <li><strong>JPEG (jpg)</strong> — для фотографий и сложных картинок. Поддерживает сжатие, размер файла небольшой.</li>
+                <li><strong>PNG</strong> — для логотипов, иконок, изображений с прозрачностью. Качество лучше, но файл тяжелее.</li>
+                <li><strong>SVG</strong> — векторный формат для иконок и логотипов. Масштабируется без потери качества.</li>
+                <li><strong>WebP</strong> — современный формат от Google, лучше сжимает, чем JPEG и PNG.</li>
+            </ul>
+
+            <h2>4. Изображение как ссылка</h2>
+            <p>Тег <code>&lt;img&gt;</code> можно обернуть в ссылку — тогда изображение станет кликабельным.</p>
+
+            <pre><code>&lt;a href="/index.html"&gt;
+    &lt;img src="/images/logo.svg" alt="На главную" width="50"&gt;
+&lt;/a&gt;</code></pre>
+
+            <p><strong>Как это выглядит в браузере:</strong></p>
+            <div class="live-example">
+                <a href="/index.html">
+                    <img src="/images/logo.svg" alt="На главную" width="50">
+                </a>
+            </div>
+
+            <h2>5. Изображение с подписью — &lt;figure&gt; и &lt;figcaption&gt;</h2>
+            <p>Тег <code>&lt;figure&gt;</code> группирует изображение и подпись. <code>&lt;figcaption&gt;</code> добавляет пояснительный текст.</p>
+
+            <pre><code>&lt;figure&gt;
+    &lt;img src="/images/logo.svg" alt="Логотип" width="80"&gt;
+    &lt;figcaption&gt;Логотип DevSkillRoad&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+
+            <p><strong>Как это выглядит в браузере:</strong></p>
+            <div class="live-example">
+                <figure>
+                    <img src="/images/logo.svg" alt="Логотип" width="80">
+                    <figcaption>Логотип DevSkillRoad</figcaption>
+                </figure>
+            </div>
+
+            <h2>6. Что нельзя делать с изображениями</h2>
+            <ul>
+                <li>Пропускать атрибут <code>alt</code>.</li>
+                <li>Ставить картинку без необходимости — например, вместо текста.</li>
+                <li>Забывать про лицензии: нельзя просто взять любую картинку из интернета.</li>
+                <li>Использовать огромные изображения без указания размеров — страница будет тормозить.</li>
+            </ul>
+
+            <div class="lecture-note">
+                <strong>📓 Из тетради:</strong> «Изображения украшают сайт, но они не должны быть самоцелью. У каждой картинки должна быть роль: иллюстрировать, дополнять, пояснять. Если картинка ничего не добавляет к смыслу — удалите её».
+            </div>
+        </div>
+
+        <div class="lecture-nav">
+            <a href="/lectures/web/html/lecture-html-7.html" class="prev">← Ссылки</a>
+            <span class="next disabled">Следующая лекция →</span>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <p>📝 Весь контент — мои личные записи, комментарии и шпаргалки. Я не копирайтер, я практик.</p>
+    </div>
+</body>
+
+</html>
