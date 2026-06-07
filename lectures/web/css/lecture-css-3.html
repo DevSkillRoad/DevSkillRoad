@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DevSkillRoad — Свойства цвета в CSS</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-top">
+            <a href="/" class="logo-link">
+                <div class="logo-image"></div>
+            </a>
+            <a href="/" class="title-link">
+                <div class="title">
+                    <h1>DevSkillRoad</h1>
+                </div>
+            </a>
+        </div>
+        
+        <nav class="main-nav">
+            <div class="dropdown">
+                <button class="dropbtn">📚 Лекции HTML</button>
+                <div class="dropdown-content">
+                    <a href="/lectures/web/html/intro-html.html">📖 Введение в HTML</a>
+                    <a href="/lectures/web/html/lecture-html-1.html">Основы HTML</a>
+                    <a href="/lectures/web/html/lecture-html-2.html">Блочные и строчные</a>
+                    <a href="/lectures/web/html/lecture-html-3.html">Заголовки h1–h6</a>
+                    <a href="/lectures/web/html/lecture-html-4.html">Текстовые теги</a>
+                    <a href="/lectures/web/html/lecture-html-5.html">Смысловое выделение</a>
+                    <a href="/lectures/web/html/lecture-html-6.html">Списки</a>
+                    <a href="/lectures/web/html/lecture-html-7.html">Ссылки</a>
+                    <a href="/lectures/web/html/lecture-html-8.html">Изображения</a>
+                    <a href="/lectures/web/html/lecture-html-9.html">Таблицы</a>
+                    <a href="/lectures/web/html/lecture-html-10.html">Формы</a>
+                    <a href="/lectures/web/html/lecture-html-11.html">Семантические теги</a>
+                    <a href="/lectures/web/html/lecture-html-12.html">Медиа</a>
+                    <a href="/lectures/web/html/lecture-html-13.html">Спецсимволы</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="content">
+        <div class="lecture-nav">
+            <a href="/lectures/web/css/lecture-css-2.html" class="prev">← Способы задания цвета</a>
+            <a href="/lectures/web/css/lecture-css-4.html" class="next">Единицы измерения →</a>
+        </div>
+
+        <h1 class="lecture-title">Свойства цвета в CSS</h1>
+        
+        <div class="lecture-meta">
+            🖌️ color, background-color
+        </div>
+
+        <div class="lecture-content">
+            <p>В прошлой лекции мы научились задавать цвет разными способами: именами, HEX, RGB, HSL. Теперь посмотрим, <strong>к каким свойствам CSS</strong> эти цвета можно применять.</p>
+
+            <h2>1. Цвет текста — color</h2>
+            <p>Свойство <code>color</code> задаёт цвет текста внутри элемента.</p>
+            <pre><code>p {
+    color: red;
+}
+
+h1 {
+    color: #530899;
+}
+
+.special {
+    color: rgb(0, 0, 255);
+}</code></pre>
+
+            <p><strong>Пример в браузере:</strong></p>
+            <div class="live-example">
+                <p style="color: red;">Красный текст (color: red)</p>
+                <p style="color: #530899;">Фиолетовый текст (color: #530899)</p>
+                <p style="color: rgb(0, 0, 255);">Синий текст (color: rgb(0, 0, 255))</p>
+            </div>
+
+            <h2>2. Цвет фона — background-color</h2>
+            <p>Свойство <code>background-color</code> задаёт цвет фона элемента.</p>
+            <pre><code>div {
+    background-color: #f0f0f0;
+}
+
+.warning {
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+.header {
+    background-color: #530899;
+}</code></pre>
+
+            <p><strong>Пример в браузере:</strong></p>
+            <div class="live-example">
+                <div style="background-color: #f0f0f0; padding: 10px; margin: 5px 0;">
+                    Светло-серый фон (background-color: #f0f0f0)
+                </div>
+                <div style="background-color: rgba(255, 0, 0, 0.2); padding: 10px; margin: 5px 0;">
+                    Полупрозрачный красный фон (background-color: rgba(255, 0, 0, 0.2))
+                </div>
+                <div style="background-color: #530899; padding: 10px; margin: 5px 0; color: white;">
+                    Фиолетовый фон (background-color: #530899)
+                </div>
+            </div>
+
+            <div class="lecture-note">
+                📌 <strong>Важно:</strong> <code>background-color</code> заливает фон только внутри элемента, включая область padding (внутренние отступы).
+            </div>
+
+            <h2>3. Сочетание цвета текста и фона</h2>
+            <p>Один элемент может одновременно иметь и цвет текста, и цвет фона. Главное — обеспечить контраст, чтобы текст был читаем.</p>
+
+            <pre><code>.card {
+    color: white;
+    background-color: #530899;
+    padding: 20px;
+    border-radius: 16px;
+}</code></pre>
+
+            <p><strong>Пример в браузере:</strong></p>
+            <div class="live-example">
+                <div style="color: white; background-color: #530899; padding: 20px; border-radius: 16px;">
+                    Белый текст на фиолетовом фоне
+                </div>
+            </div>
+
+            <div class="lecture-note">
+                📌 <strong>О границах:</strong> Цвет границы (<code>border-color</code>) и другие свойства рамок мы рассмотрим в отдельной лекции, посвящённой блочной модели и границам.
+            </div>
+
+            <div class="lecture-note">
+                <strong>📓 Из тетради:</strong> «Цвет — это язык дизайна. Текст читается, фон создаёт настроение. Используйте цвет осознанно: контраст должен быть, а глаз — не уставать».
+            </div>
+        </div>
+
+        <div class="lecture-nav">
+            <a href="/lectures/web/css/lecture-css-2.html" class="prev">← Способы задания цвета</a>
+            <a href="/lectures/web/css/lecture-css-4.html" class="next">Единицы измерения →</a>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <p>📝 Весь контент — мои личные записи, комментарии и шпаргалки. Я не копирайтер, я практик.</p>
+    </div>
+</body>
+
+</html>
