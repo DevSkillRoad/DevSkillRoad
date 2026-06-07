@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DevSkillRoad — Блочная модель в CSS</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-top">
+            <a href="/" class="logo-link">
+                <div class="logo-image"></div>
+            </a>
+            <a href="/" class="title-link">
+                <div class="title">
+                    <h1>DevSkillRoad</h1>
+                </div>
+            </a>
+        </div>
+        
+        <nav class="main-nav">
+            <div class="dropdown">
+                <button class="dropbtn">📚 Лекции HTML</button>
+                <div class="dropdown-content">
+                    <a href="/lectures/web/html/intro-html.html">📖 Введение в HTML</a>
+                    <a href="/lectures/web/html/lecture-html-1.html">Основы HTML</a>
+                    <a href="/lectures/web/html/lecture-html-2.html">Блочные и строчные</a>
+                    <a href="/lectures/web/html/lecture-html-3.html">Заголовки h1–h6</a>
+                    <a href="/lectures/web/html/lecture-html-4.html">Текстовые теги</a>
+                    <a href="/lectures/web/html/lecture-html-5.html">Смысловое выделение</a>
+                    <a href="/lectures/web/html/lecture-html-6.html">Списки</a>
+                    <a href="/lectures/web/html/lecture-html-7.html">Ссылки</a>
+                    <a href="/lectures/web/html/lecture-html-8.html">Изображения</a>
+                    <a href="/lectures/web/html/lecture-html-9.html">Таблицы</a>
+                    <a href="/lectures/web/html/lecture-html-10.html">Формы</a>
+                    <a href="/lectures/web/html/lecture-html-11.html">Семантические теги</a>
+                    <a href="/lectures/web/html/lecture-html-12.html">Медиа</a>
+                    <a href="/lectures/web/html/lecture-html-13.html">Спецсимволы</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="content">
+        <div class="lecture-nav">
+            <a href="/lectures/web/css/lecture-css-6.html" class="prev">← Подключение шрифтов</a>
+            <span class="next disabled">Следующая лекция →</span>
+        </div>
+
+        <h1 class="lecture-title">Блочная модель в CSS</h1>
+        
+        <div class="lecture-meta">
+            📦 width, height, padding, margin, border, box-sizing
+        </div>
+
+        <div class="lecture-content">
+            <p>Каждый элемент на странице — это прямоугольник. Блочная модель описывает, из каких частей он состоит и как эти части влияют на размер и расположение.</p>
+
+            <p><strong>Схема блочной модели:</strong></p>
+            <div style="background: #f0f0f0; padding: 20px; text-align: center; margin: 20px 0; border-radius: 12px;">
+                <div style="border: 2px dashed #530899; padding: 15px; background: #fff;">
+                    <strong>margin</strong> (внешний отступ)
+                    <div style="border: 2px solid #14b8a6; padding: 15px; margin: 10px; background: #fff;">
+                        <strong>border</strong> (граница)
+                        <div style="border: 2px dashed #ffc107; padding: 15px; margin: 10px; background: #fff;">
+                            <strong>padding</strong> (внутренний отступ)
+                            <div style="background: #e0daf0; padding: 20px; margin: 10px;">
+                                <strong>content</strong><br>
+                                (содержимое)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top: 10px; font-size: 14px;">Схематичное представление блочной модели</p>
+            </div>
+
+            <h2>1. Ширина и высота — width, height</h2>
+            <p>Задают ширину и высоту элемента. <strong>Как именно они работают, зависит от свойства <code>box-sizing</code></strong> (см. раздел 6).</p>
+            <p>По умолчанию (<code>content-box</code>) <code>width</code> задаёт только ширину содержимого. <code>padding</code> и <code>border</code> добавляются сверху.</p>
+            <p>При <code>border-box</code> <code>width</code> включает в себя <code>padding</code> и <code>border</code>.</p>
+            <p><strong>Возможные значения:</strong></p>
+            <ul>
+                <li><code>px</code> — пиксели</li>
+                <li><code>%</code> — проценты от родителя</li>
+                <li><code>auto</code> — автоматический размер (по умолчанию)</li>
+                <li><code>vw</code>, <code>vh</code> — проценты от окна браузера</li>
+            </ul>
+            <pre><code>.box {
+    width: 200px;
+    height: 100px;
+}</code></pre>
+            <div class="live-example">
+                <div style="width: 200px; height: 100px; background: #530899; color: white; text-align: center; line-height: 100px;">
+                    200×100
+                </div>
+            </div>
+
+            <h2>2. Внутренние отступы — padding</h2>
+            <p>Расстояние от границы содержимого до границы элемента. Увеличивает видимый размер элемента. Фон и граница распространяются на область padding.</p>
+            <p><strong>Возможные значения:</strong> пиксели, <code>em</code>, <code>rem</code>, проценты.</p>
+            <pre><code>.no-padding {
+    background: #f0f0f0;
+}
+.with-padding {
+    background: #f0f0f0;
+    padding: 20px;
+}</code></pre>
+            <div class="live-example">
+                <div style="background: #f0f0f0; margin-bottom: 10px; padding: 0;">Без padding (текст прилип к краю)</div>
+                <div style="background: #f0f0f0; padding: 20px;">С padding: 20px (текст отодвинут от края)</div>
+            </div>
+            <div class="lecture-note">
+                📌 Можно задавать отступы для каждой стороны отдельно:
+                <ul>
+                    <li><code>padding-top</code> — сверху</li>
+                    <li><code>padding-right</code> — справа</li>
+                    <li><code>padding-bottom</code> — снизу</li>
+                    <li><code>padding-left</code> — слева</li>
+                </ul>
+                Сокращённая запись: <code>padding: 10px 20px 30px 40px;</code> (верх, право, низ, лево)
+            </div>
+
+            <h2>3. Внешние отступы — margin</h2>
+            <p>Расстояние от границы элемента до соседних элементов. Не увеличивает видимый размер элемента, но влияет на расположение. Фон и граница не распространяются на margin.</p>
+            <p><strong>Возможные значения:</strong> пиксели, <code>em</code>, <code>rem</code>, <code>auto</code> (центрирование), проценты.</p>
+            
+            <p><strong>Пример: разница между padding и margin наглядно</strong></p>
+            <pre><code>.parent {
+    background: #f0f0f0;
+}
+.child-padding {
+    background: #530899;
+    padding: 20px;
+}
+.child-margin {
+    background: #14b8a6;
+    margin: 20px;
+}</code></pre>
+            <div class="live-example">
+                <div style="background: #f0f0f0;">
+                    <div style="background: #530899; color: white; padding: 20px; margin-bottom: 10px;">
+                        padding: 20px<br>
+                        (фон и граница внутри, элемент увеличился)
+                    </div>
+                    <div style="background: #14b8a6; color: white; margin: 20px; padding: 10px;">
+                        margin: 20px<br>
+                        (отступ снаружи, между элементами появилось расстояние)
+                    </div>
+                    <div style="background: #f0f0f0; border: 1px dashed #999; text-align: center; margin-top: 5px;">
+                        Этот блок показывает, где заканчивается внешний отступ
+                    </div>
+                </div>
+            </div>
+            <div class="lecture-note">
+                📌 <strong>Margin collapse (схлопывание):</strong> если у двух соседних элементов задан нижний и верхний отступы, браузер выберет больший из них, а не сложит. Это особенность блочной модели.
+            </div>
+
+            <h2>4. Границы — border</h2>
+            <p>Линия вокруг элемента. Требует три параметра: толщину, стиль и цвет.</p>
+            <p><strong>Возможные значения стилей границ:</strong></p>
+            <ul>
+                <li><code>solid</code> — сплошная линия</li>
+                <li><code>dashed</code> — штриховая линия</li>
+                <li><code>dotted</code> — точечная линия</li>
+                <li><code>double</code> — двойная линия</li>
+                <li><code>none</code> — без границы (по умолчанию)</li>
+            </ul>
+            <pre><code>.solid {
+    border: 2px solid #530899;
+}
+.dashed {
+    border: 2px dashed #14b8a6;
+}
+.dotted {
+    border: 2px dotted #ffc107;
+}</code></pre>
+            <div class="live-example">
+                <div style="border: 2px solid #530899; padding: 10px; margin-bottom: 10px;">solid — сплошная линия</div>
+                <div style="border: 2px dashed #14b8a6; padding: 10px; margin-bottom: 10px;">dashed — штриховая линия</div>
+                <div style="border: 2px dotted #ffc107; padding: 10px;">dotted — точечная линия</div>
+            </div>
+
+            <h2>5. Разница между padding и margin</h2>
+            <table class="special-chars-table">
+                <thead>
+                    <tr><th>padding</th><th>margin</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Внутренний отступ (внутри элемента)</td><td>Внешний отступ (снаружи элемента)</td></tr>
+                    <tr><td>Увеличивает видимый размер элемента</td><td>Не увеличивает видимый размер</td></tr>
+                    <tr><td>Фон и граница распространяются на padding</td><td>Фон и граница не затрагивают margin</td></tr>
+                </tbody>
+            </table>
+
+            <h2>6. box-sizing — как считаются размеры</h2>
+            <p>Свойство <code>box-sizing</code> определяет, включаются ли padding и border в ширину и высоту.</p>
+            <p><strong>Возможные значения:</strong></p>
+            <ul>
+                <li><code>content-box</code> (по умолчанию) — width задаёт только ширину содержимого. padding и border прибавляются сверху.</li>
+                <li><code>border-box</code> — width включает в себя содержимое, padding и border. Самый удобный вариант.</li>
+            </ul>
+            <pre><code>.content-box {
+    box-sizing: content-box;
+    width: 200px;
+    padding: 20px;
+    border: 2px solid #530899;
+    /* реальная ширина: 200 + 40 + 4 = 244px */
+}
+.border-box {
+    box-sizing: border-box;
+    width: 200px;
+    padding: 20px;
+    border: 2px solid #530899;
+    /* реальная ширина: 200px */
+}</code></pre>
+            <div class="live-example">
+                <div style="box-sizing: content-box; width: 200px; padding: 20px; border: 2px solid #530899; background: #f0f0f0; margin-bottom: 10px;">
+                    content-box<br>
+                    width: 200px<br>
+                    реальная ширина: ~244px
+                </div>
+                <div style="box-sizing: border-box; width: 200px; padding: 20px; border: 2px solid #530899; background: #f0f0f0;">
+                    border-box<br>
+                    width: 200px<br>
+                    реальная ширина: 200px
+                </div>
+            </div>
+            <div class="lecture-note">
+                📌 <strong>Совет:</strong> Многие разработчики используют глобальное правило <code>* { box-sizing: border-box; }</code>, чтобы все элементы считали размеры предсказуемо.
+            </div>
+
+            <div class="lecture-note">
+                <strong>📓 Из тетради:</strong> «Блочная модель — это фундамент вёрстки. Поймите разницу между padding и margin, научитесь считать реальные размеры. И всегда помните про box-sizing: border-box — он спасёт вас от неожиданных расползаний верстки».
+            </div>
+        </div>
+
+        <div class="lecture-nav">
+            <a href="/lectures/web/css/lecture-css-6.html" class="prev">← Подключение шрифтов</a>
+            <span class="next disabled">Следующая лекция →</span>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <p>📝 Весь контент — мои личные записи, комментарии и шпаргалки. Я не копирайтер, я практик.</p>
+    </div>
+</body>
+
+</html>
