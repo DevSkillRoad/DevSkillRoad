@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DevSkillRoad — Шрифты и текст в CSS</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-top">
+            <a href="/" class="logo-link">
+                <div class="logo-image"></div>
+            </a>
+            <a href="/" class="title-link">
+                <div class="title">
+                    <h1>DevSkillRoad</h1>
+                </div>
+            </a>
+        </div>
+        
+        <nav class="main-nav">
+            <div class="dropdown">
+                <button class="dropbtn">📚 Лекции HTML</button>
+                <div class="dropdown-content">
+                    <a href="/lectures/web/html/intro-html.html">📖 Введение в HTML</a>
+                    <a href="/lectures/web/html/lecture-html-1.html">Основы HTML</a>
+                    <a href="/lectures/web/html/lecture-html-2.html">Блочные и строчные</a>
+                    <a href="/lectures/web/html/lecture-html-3.html">Заголовки h1–h6</a>
+                    <a href="/lectures/web/html/lecture-html-4.html">Текстовые теги</a>
+                    <a href="/lectures/web/html/lecture-html-5.html">Смысловое выделение</a>
+                    <a href="/lectures/web/html/lecture-html-6.html">Списки</a>
+                    <a href="/lectures/web/html/lecture-html-7.html">Ссылки</a>
+                    <a href="/lectures/web/html/lecture-html-8.html">Изображения</a>
+                    <a href="/lectures/web/html/lecture-html-9.html">Таблицы</a>
+                    <a href="/lectures/web/html/lecture-html-10.html">Формы</a>
+                    <a href="/lectures/web/html/lecture-html-11.html">Семантические теги</a>
+                    <a href="/lectures/web/html/lecture-html-12.html">Медиа</a>
+                    <a href="/lectures/web/html/lecture-html-13.html">Спецсимволы</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="content">
+        <div class="lecture-nav">
+            <a href="/lectures/web/css/lecture-css-4.html" class="prev">← Единицы измерения</a>
+            <span class="next disabled">Следующая лекция →</span>
+        </div>
+
+        <h1 class="lecture-title">Шрифты и текст в CSS</h1>
+        
+        <div class="lecture-meta">
+            🔤 Как управлять внешним видом текста
+        </div>
+
+        <div class="lecture-content">
+            <p>В этой лекции мы разберём свойства CSS, которые отвечают за внешний вид текста: шрифт, размер, жирность, выравнивание, цвет и межстрочный интервал.</p>
+
+            <h2>1. Цвет текста — color</h2>
+            <p>Задаёт цвет текста. Способы задания мы уже изучили в лекции 2.</p>
+            <pre><code>.purple {
+    color: #530899;
+}</code></pre>
+            <div class="live-example">
+                <p style="color: #530899;">Фиолетовый текст</p>
+            </div>
+
+            <h2>2. Шрифт — font-family</h2>
+            <p>Задаёт гарнитуру шрифта. Можно перечислять несколько через запятую — браузер выберет первый доступный. В конце указывают тип шрифта как запасной вариант.</p>
+            <p><strong>Возможные значения:</strong></p>
+            <ul>
+                <li>Название конкретного шрифта: <code>Arial</code>, <code>'Times New Roman'</code>, <code>'Courier New'</code></li>
+                <li><code>serif</code> — шрифт с засечками (Times New Roman)</li>
+                <li><code>sans-serif</code> — шрифт без засечек (Arial)</li>
+                <li><code>monospace</code> — моноширинный шрифт (Courier New)</li>
+                <li><code>cursive</code> — рукописный шрифт</li>
+                <li><code>fantasy</code> — декоративный шрифт</li>
+            </ul>
+            <pre><code>.sans {
+    font-family: Arial, sans-serif;
+}
+.serif {
+    font-family: 'Times New Roman', serif;
+}
+.mono {
+    font-family: 'Courier New', monospace;
+}</code></pre>
+            <div class="live-example">
+                <p style="font-family: Arial, sans-serif;">Arial, sans-serif</p>
+                <p style="font-family: 'Times New Roman', serif;">Times New Roman, serif</p>
+                <p style="font-family: 'Courier New', monospace;">Courier New, monospace</p>
+            </div>
+
+            <h2>3. Размер шрифта — font-size</h2>
+            <p>Задаёт размер текста.</p>
+            <p><strong>Возможные значения:</strong></p>
+            <ul>
+                <li><code>px</code> — пиксели (абсолютный размер): <code>16px</code>, <code>24px</code></li>
+                <li><code>rem</code> — относительно корневого шрифта (<code>&lt;html&gt;</code>): <code>1rem</code>, <code>1.5rem</code></li>
+                <li><code>em</code> — относительно шрифта родителя: <code>1em</code>, <code>1.5em</code></li>
+                <li><code>%</code> — проценты от родителя: <code>100%</code>, <code>150%</code></li>
+            </ul>
+            <pre><code>.small {
+    font-size: 0.8rem;
+}
+.normal {
+    font-size: 1rem;
+}
+.large {
+    font-size: 1.5rem;
+}</code></pre>
+            <div class="live-example">
+                <p style="font-size: 0.8rem;">0.8rem (мелкий текст)</p>
+                <p style="font-size: 1rem;">1rem (обычный текст)</p>
+                <p style="font-size: 1.5rem;">1.5rem (крупный текст)</p>
+            </div>
+
+            <h2>4. Жирность — font-weight</h2>
+            <p>Задаёт насыщенность шрифта.</p>
+            <p><strong>Возможные значения:</strong></p>
+            <ul>
+                <li><code>normal</code> — обычный (400)</li>
+                <li><code>bold</code> — жирный (700)</li>
+                <li>Числа от 100 до 900: <code>100</code> (тонкий), <code>300</code> (светлый), <code>400</code> (normal), <code>700</code> (bold), <code>900</code> (очень жирный)</li>
+            </ul>
+            <pre><code>.normal {
+    font-weight: normal;
+}
+.bold {
+    font-weight: bold;
+}
+.extra-bold {
+    font-weight: 900;
+}</code></pre>
+            <div class="live-example">
+                <p style="font-weight: normal;">normal (400) — обычный текст</p>
+                <p style="font-weight: bold;">bold (700) — жирный текст</p>
+                <p style="font-weight: 900;">900 — очень жирный текст</p>
+            </div>
+
+            <h2>5. Курсив — font-style</h2>
+            <p>Включает курсивное начертание.</p>
+            <p><strong>Возможные значения:</strong></p>
+            <ul>
+                <li><code>normal</code> — обычный</li>
+                <li><code>italic</code> — курсив</li>
+            </ul>
+            <pre><code>.normal {
+    font-style: normal;
+}
+.italic {
+    font-style: italic;
+}</code></pre>
+            <div class="live-example">
+                <p style="font-style: normal;">normal — обычный текст</p>
+                <p style="font-style: italic;">italic — курсивный текст</p>
+            </div>
+
+            <h2>6. Межстрочный интервал — line-height</h2>
+            <p>Задаёт расстояние между строками текста. Рекомендуется использовать числа без единиц — они умножаются на размер шрифта.</p>
+            <p><strong>Возможные значения:</strong></p>
+            <ul>
+                <li>Число без единиц (рекомендуется): <code>1.2</code>, <code>1.5</code>, <code>2</code></li>
+                <li>В пикселях: <code>24px</code></li>
+                <li>В процентах: <code>150%</code></li>
+            </ul>
+            <pre><code>.tight {
+    line-height: 1.2;
+}
+.normal {
+    line-height: 1.5;
+}
+.loose {
+    line-height: 2;
+}</code></pre>
+            <div class="live-example">
+                <div style="line-height: 1.2; background: #f0f0f0; margin-bottom: 10px; padding: 8px;">
+                    line-height: 1.2 (плотно)<br>
+                    Вторая строка для наглядности
+                </div>
+                <div style="line-height: 1.5; background: #f0f0f0; margin-bottom: 10px; padding: 8px;">
+                    line-height: 1.5 (обычно)<br>
+                    Вторая строка для наглядности
+                </div>
+                <div style="line-height: 2; background: #f0f0f0; padding: 8px;">
+                    line-height: 2 (свободно)<br>
+                    Вторая строка для наглядности
+                </div>
+            </div>
+
+            <h2>7. Выравнивание текста — text-align</h2>
+            <p>Задаёт выравнивание текста внутри блока.</p>
+            <p><strong>Возможные значения:</strong></p>
+            <ul>
+                <li><code>left</code> — по левому краю (по умолчанию)</li>
+                <li><code>center</code> — по центру</li>
+                <li><code>right</code> — по правому краю</li>
+                <li><code>justify</code> — по ширине (растягивает строки)</li>
+            </ul>
+            <pre><code>.left {
+    text-align: left;
+}
+.center {
+    text-align: center;
+}
+.right {
+    text-align: right;
+}
+.justify {
+    text-align: justify;
+}</code></pre>
+            <div class="live-example">
+                <p style="text-align: left; background: #f0f0f0; padding: 8px;">left — по левому краю</p>
+                <p style="text-align: center; background: #f0f0f0; padding: 8px;">center — по центру</p>
+                <p style="text-align: right; background: #f0f0f0; padding: 8px;">right — по правому краю</p>
+                <p style="text-align: justify; background: #f0f0f0; padding: 8px;">justify — по ширине. Этот текст растягивается, чтобы занимать всю ширину блока. Особенно заметно в длинных абзацах.</p>
+            </div>
+
+            <h2>8. Оформление текста — text-decoration</h2>
+            <p>Добавляет линии над, под или через текст.</p>
+            <p><strong>Возможные значения:</strong></p>
+            <ul>
+                <li><code>none</code> — без оформления (по умолчанию)</li>
+                <li><code>underline</code> — подчёркнутый текст</li>
+                <li><code>line-through</code> — зачёркнутый текст</li>
+                <li><code>overline</code> — линия сверху</li>
+            </ul>
+            <pre><code>.none {
+    text-decoration: none;
+}
+.underline {
+    text-decoration: underline;
+}
+.line-through {
+    text-decoration: line-through;
+}
+.overline {
+    text-decoration: overline;
+}</code></pre>
+            <div class="live-example">
+                <p><span style="text-decoration: none;">none — без оформления</span></p>
+                <p><span style="text-decoration: underline;">underline — подчёркнутый текст</span></p>
+                <p><span style="text-decoration: line-through;">line-through — зачёркнутый текст</span></p>
+                <p><span style="text-decoration: overline;">overline — линия сверху</span></p>
+            </div>
+
+            <div class="lecture-note">
+                <strong>📓 Из тетради:</strong> «Шрифт — это голос вашего сайта. Главное — текст должен быть читаемым. Размер не меньше 14–16px, строки не слишком плотные, контраст достаточный. И помните: для ссылок подчёркивание обычно убирают, но оставляют его при наведении — это мы разберём в лекции про псевдоклассы».
+            </div>
+        </div>
+
+        <div class="lecture-nav">
+            <a href="/lectures/web/css/lecture-css-4.html" class="prev">← Единицы измерения</a>
+            <span class="next disabled">Следующая лекция →</span>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <p>📝 Весь контент — мои личные записи, комментарии и шпаргалки. Я не копирайтер, я практик.</p>
+    </div>
+</body>
+
+</html>
