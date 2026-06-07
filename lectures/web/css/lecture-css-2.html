@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DevSkillRoad — Цвета в CSS</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-top">
+            <a href="/" class="logo-link">
+                <div class="logo-image"></div>
+            </a>
+            <a href="/" class="title-link">
+                <div class="title">
+                    <h1>DevSkillRoad</h1>
+                </div>
+            </a>
+        </div>
+        
+        <nav class="main-nav">
+            <div class="dropdown">
+                <button class="dropbtn">📚 Лекции HTML</button>
+                <div class="dropdown-content">
+                    <a href="/lectures/web/html/intro-html.html">📖 Введение в HTML</a>
+                    <a href="/lectures/web/html/lecture-html-1.html">Основы HTML</a>
+                    <a href="/lectures/web/html/lecture-html-2.html">Блочные и строчные</a>
+                    <a href="/lectures/web/html/lecture-html-3.html">Заголовки h1–h6</a>
+                    <a href="/lectures/web/html/lecture-html-4.html">Текстовые теги</a>
+                    <a href="/lectures/web/html/lecture-html-5.html">Смысловое выделение</a>
+                    <a href="/lectures/web/html/lecture-html-6.html">Списки</a>
+                    <a href="/lectures/web/html/lecture-html-7.html">Ссылки</a>
+                    <a href="/lectures/web/html/lecture-html-8.html">Изображения</a>
+                    <a href="/lectures/web/html/lecture-html-9.html">Таблицы</a>
+                    <a href="/lectures/web/html/lecture-html-10.html">Формы</a>
+                    <a href="/lectures/web/html/lecture-html-11.html">Семантические теги</a>
+                    <a href="/lectures/web/html/lecture-html-12.html">Медиа</a>
+                    <a href="/lectures/web/html/lecture-html-13.html">Спецсимволы</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="content">
+        <div class="lecture-nav">
+            <a href="/lectures/web/css/lecture-css-1.html" class="prev">← Селекторы</a>
+            <span class="next disabled">Следующая лекция →</span>
+        </div>
+
+        <h1 class="lecture-title">Цвета в CSS</h1>
+        
+        <div class="lecture-meta">
+            🎨 Способы задания цвета
+        </div>
+
+        <div class="lecture-content">
+            <p>В CSS цвет можно задать разными способами. Самые популярные — имена цветов, HEX-коды, RGB и HSL.</p>
+
+            <h2>1. Имена цветов</h2>
+            <p>Самый простой способ — написать название цвета по-английски. Подходит для основных цветов.</p>
+            <pre><code>color: red;
+color: blue;
+color: green;
+color: black;
+color: white;</code></pre>
+
+            <p><strong>Пример в браузере:</strong></p>
+            <div class="live-example">
+                <p style="color: red;">Красный текст</p>
+                <p style="color: blue;">Синий текст</p>
+                <p style="color: green;">Зелёный текст</p>
+            </div>
+
+            <div class="lecture-note">
+                📌 Всего существует <strong>140 стандартных имён цветов</strong> (включая tomato, lavender, coral и другие). Но на практике чаще используют HEX.
+            </div>
+
+            <h2>2. HEX-коды (шестнадцатеричные)</h2>
+            <p>Самый популярный способ в вёрстке. Цвет задаётся решёткой <code>#</code> и шестью символами: RRGGBB (красный, зелёный, синий).</p>
+            <pre><code>color: #FF0000;   /* красный */
+color: #00FF00;   /* зелёный */
+color: #0000FF;   /* синий */
+color: #530899;   /* фиолетовый (как в нашем сайте) */
+color: #000000;   /* чёрный */
+color: #FFFFFF;   /* белый */</code></pre>
+
+            <p><strong>Пример в браузере:</strong></p>
+            <div class="live-example">
+                <p style="color: #FF0000;">Красный (#FF0000)</p>
+                <p style="color: #00FF00;">Зелёный (#00FF00)</p>
+                <p style="color: #0000FF;">Синий (#0000FF)</p>
+                <p style="color: #530899;">Фиолетовый (#530899)</p>
+            </div>
+
+            <h2>3. RGB (Red, Green, Blue)</h2>
+            <p>Цвет задаётся тремя числами от 0 до 255 — интенсивность красного, зелёного и синего.</p>
+            <pre><code>color: rgb(255, 0, 0);      /* красный */
+color: rgb(0, 255, 0);      /* зелёный */
+color: rgb(0, 0, 255);      /* синий */
+color: rgb(83, 8, 153);     /* фиолетовый (#530899) */</code></pre>
+
+            <p><strong>Пример в браузере:</strong></p>
+            <div class="live-example">
+                <p style="color: rgb(255, 0, 0);">Красный (rgb(255, 0, 0))</p>
+                <p style="color: rgb(0, 255, 0);">Зелёный (rgb(0, 255, 0))</p>
+                <p style="color: rgb(0, 0, 255);">Синий (rgb(0, 0, 255))</p>
+                <p style="color: rgb(83, 8, 153);">Фиолетовый (rgb(83, 8, 153))</p>
+            </div>
+
+            <h3>RGBA — с прозрачностью</h3>
+            <p>Добавляет четвёртое значение — прозрачность (alpha) от 0 (полностью прозрачный) до 1 (полностью непрозрачный).</p>
+            <pre><code>background-color: rgba(255, 0, 0, 0.3);   /* полупрозрачный красный фон */
+background-color: rgba(83, 8, 153, 0.5);  /* полупрозрачный фиолетовый фон */
+background-color: rgba(0, 0, 255, 0.1);   /* почти прозрачный синий фон */</code></pre>
+
+            <p><strong>Пример в браузере (на белом фоне):</strong></p>
+            <div class="live-example">
+                <div style="background-color: rgba(255, 0, 0, 0.3); padding: 10px; margin: 5px 0;">
+                    Красный фон с прозрачностью 0.3
+                </div>
+                <div style="background-color: rgba(83, 8, 153, 0.5); padding: 10px; margin: 5px 0; color: white;">
+                    Фиолетовый фон с прозрачностью 0.5
+                </div>
+                <div style="background-color: rgba(0, 0, 255, 0.1); padding: 10px; margin: 5px 0;">
+                    Синий фон с прозрачностью 0.1 (почти незаметен)
+                </div>
+            </div>
+
+            <h2>4. HSL (Hue, Saturation, Lightness)</h2>
+            <p>Более интуитивный способ задания цвета. Состоит из трёх компонентов.</p>
+
+            <h3>Тон (Hue) — от 0 до 360</h3>
+            <p>Это положение цвета на цветовом круге. 0° — красный, 120° — зелёный, 240° — синий, 360° — снова красный.</p>
+
+            <h3>Насыщенность (Saturation) — от 0% до 100%</h3>
+            <p>Чем выше процент, тем цвет ярче и насыщеннее. При 0% цвет становится серым (оттенки серого).</p>
+            
+            <div class="live-example">
+                <p style="color: hsl(240, 100%, 50%);">Синий, насыщенность 100% (яркий)</p>
+                <p style="color: hsl(240, 50%, 50%);">Синий, насыщенность 50% (приглушённый)</p>
+                <p style="color: hsl(240, 0%, 50%);">Синий, насыщенность 0% (серый)</p>
+            </div>
+
+            <h3>Светлота (Lightness) — от 0% до 100%</h3>
+            <p>Чем выше процент, тем цвет светлее. 0% — чёрный, 100% — белый. 50% — чистый цвет без добавления чёрного или белого.</p>
+            
+            <div class="live-example">
+                <p style="color: hsl(240, 100%, 20%);">Тёмно-синий (светлота 20%)</p>
+                <p style="color: hsl(240, 100%, 50%);">Стандартный синий (светлота 50%)</p>
+                <p style="color: hsl(240, 100%, 80%);">Светло-синий (светлота 80%)</p>
+            </div>
+
+            <h3>Как это понять на примере фиолетового (#530899)</h3>
+            <p>Переведём наш фиолетовый в HSL: <code>hsl(270, 90%, 32%)</code></p>
+            <ul>
+                <li><strong>Тон 270°</strong> — фиолетовый (между синим 240° и пурпурным 300°)</li>
+                <li><strong>Насыщенность 90%</strong> — очень насыщенный, яркий</li>
+                <li><strong>Светлота 32%</strong> — довольно тёмный (ближе к чёрному)</li>
+            </ul>
+
+            <p><strong>Примеры изменения насыщенности:</strong></p>
+            <div class="live-example">
+                <p style="color: hsl(270, 90%, 32%);">Наш фиолетовый (90% насыщенности)</p>
+                <p style="color: hsl(270, 50%, 32%);">Приглушённый фиолетовый (50%)</p>
+                <p style="color: hsl(270, 10%, 32%);">Почти серый (10%)</p>
+            </div>
+
+            <p><strong>Примеры изменения светлоты:</strong></p>
+            <div class="live-example">
+                <p style="color: hsl(270, 90%, 20%);">Очень тёмный фиолетовый (20% светлоты)</p>
+                <p style="color: hsl(270, 90%, 50%);">Средний фиолетовый (50% светлоты)</p>
+                <p style="color: hsl(270, 90%, 80%);">Светлый фиолетовый (80% светлоты)</p>
+            </div>
+
+            <div class="lecture-note">
+                📌 <strong>Аналогия:</strong> Тон — это цвет радуги (красный, оранжевый, жёлтый...). Насыщенность — как сильно вы крутите регулятор цвета на телевизоре: от чёрно-белого (0%) до кислотного (100%). Светлота — как яркость лампочки: от чёрного (0%) до белого (100%).
+            </div>
+
+            <h3>HSLA — с прозрачностью</h3>
+            <pre><code>background-color: hsla(270, 90%, 32%, 0.5);  /* полупрозрачный фиолетовый */</code></pre>
+
+            <h2>5. Какой способ выбрать?</h2>
+            <ul>
+                <li><strong>Имена цветов</strong> — только для прототипов (red, blue, green)</li>
+                <li><strong>HEX</strong> — стандарт в вёрстке, везде поддерживается, компактный</li>
+                <li><strong>RGB/RGBA</strong> — удобно, когда нужна прозрачность</li>
+                <li><strong>HSL/HSLA</strong> — удобно, когда нужно менять тон или насыщенность программно</li>
+            </ul>
+
+            <div class="lecture-note">
+                <strong>📓 Из тетради:</strong> «Цвет — это первое, что видит пользователь. Не экономьте на контрасте. Тёмный текст на светлом фоне — основа читаемости».
+            </div>
+        </div>
+
+        <div class="lecture-nav">
+            <a href="/lectures/web/css/lecture-css-1.html" class="prev">← Селекторы</a>
+            <span class="next disabled">Следующая лекция →</span>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <p>📝 Весь контент — мои личные записи, комментарии и шпаргалки. Я не копирайтер, я практик.</p>
+    </div>
+</body>
+
+</html>
