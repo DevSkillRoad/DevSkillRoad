@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DevSkillRoad — Введение в CSS</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-top">
+            <a href="/" class="logo-link">
+                <div class="logo-image"></div>
+            </a>
+            <a href="/" class="title-link">
+                <div class="title">
+                    <h1>DevSkillRoad</h1>
+                </div>
+            </a>
+        </div>
+        
+        <nav class="main-nav">
+            <div class="dropdown">
+                <button class="dropbtn">📚 Лекции HTML</button>
+                <div class="dropdown-content">
+                    <a href="/lectures/web/html/intro-html.html">📖 Введение в HTML</a>
+                    <a href="/lectures/web/html/lecture-html-1.html">Основы HTML</a>
+                    <a href="/lectures/web/html/lecture-html-2.html">Блочные и строчные</a>
+                    <a href="/lectures/web/html/lecture-html-3.html">Заголовки h1–h6</a>
+                    <a href="/lectures/web/html/lecture-html-4.html">Текстовые теги</a>
+                    <a href="/lectures/web/html/lecture-html-5.html">Смысловое выделение</a>
+                    <a href="/lectures/web/html/lecture-html-6.html">Списки</a>
+                    <a href="/lectures/web/html/lecture-html-7.html">Ссылки</a>
+                    <a href="/lectures/web/html/lecture-html-8.html">Изображения</a>
+                    <a href="/lectures/web/html/lecture-html-9.html">Таблицы</a>
+                    <a href="/lectures/web/html/lecture-html-10.html">Формы</a>
+                    <a href="/lectures/web/html/lecture-html-11.html">Семантические теги</a>
+                    <a href="/lectures/web/html/lecture-html-12.html">Медиа</a>
+                    <a href="/lectures/web/html/lecture-html-13.html">Спецсимволы</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="content">
+        <!-- Навигация "Вперёд/Назад" для последовательного изучения -->
+        <div class="lecture-nav">
+            <a href="/lectures/web/html/lecture-html-13.html" class="next">← Спецсимволы</a>
+            <a href="/lectures/web/css/lecture-css-1.html" class="next">Селекторы →</a>
+        </div>
+
+        <h1 class="lecture-title">Введение в CSS</h1>
+        
+        <div class="lecture-meta">
+            🎨 Каскадные таблицы стилей
+        </div>
+
+        <div class="lecture-content">
+            <p><strong>CSS (Cascading Style Sheets)</strong> — каскадные таблицы стилей. Это язык, который описывает, как должен выглядеть HTML-документ.</p>
+
+            <h2>1. Что такое CSS?</h2>
+            <p>CSS — это текстовый файл с расширением <code>.css</code>. В нём пишутся правила, которые говорят браузеру, как отображать элементы на странице: цвет, размер, расположение, шрифт, анимацию.</p>
+
+            <p>HTML отвечает за структуру. CSS — за внешний вид. Без CSS сайт выглядит как чёрно-белый документ без картинок и оформления.</p>
+
+            <h2>2. Зачем нужен CSS?</h2>
+            <ul>
+                <li><strong>Разделение содержания и оформления:</strong> HTML пишет структуру, CSS — внешний вид. Можно менять дизайн, не трогая HTML.</li>
+                <li><strong>Единый стиль для всего сайта:</strong> Один CSS-файл может управлять внешним видом всех страниц.</li>
+                <li><strong>Адаптивность:</strong> CSS позволяет подстраивать сайт под разные экраны (телефоны, планшеты, компьютеры).</li>
+                <li><strong>Анимации и эффекты:</strong> Плавные переходы, hover-эффекты, трансформации.</li>
+            </ul>
+
+            <h2>3. Как подключить CSS к странице?</h2>
+
+            <h3>Внешний файл (рекомендуется)</h3>
+            <p>Самый чистый способ. Весь CSS лежит в отдельном файле (<code>styles.css</code>), а в HTML в раздел <code>&lt;head&gt;</code> ставится ссылка на него.</p>
+            <pre><code>&lt;head&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;</code></pre>
+
+            <h3>Внутренний стиль (тег &lt;style&gt;)</h3>
+            <p>CSS пишется внутри HTML-страницы в теге <code>&lt;style&gt;</code>, который также помещается в <code>&lt;head&gt;</code>. Используется редко, только для маленьких страниц.</p>
+            <pre><code>&lt;head&gt;
+    &lt;style&gt;
+        body {
+            background: #f0f0f0;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+
+            <h3>Инлайновый (атрибут style)</h3>
+            <p>CSS пишется прямо в тег. Используется в исключительных случаях (плохая практика).</p>
+            <pre><code>&lt;p style="color: red;"&gt;Красный текст&lt;/p&gt;</code></pre>
+
+            <div class="lecture-note">
+                📌 <strong>Правило:</strong> Всегда используйте внешний файл, подключая его в <code>&lt;head&gt;</code>. Это удобно, быстро и правильно.
+            </div>
+
+            <h2>4. Синтаксис CSS</h2>
+            <p>CSS-правило состоит из <strong>селектора</strong> и <strong>блока объявлений</strong>.</p>
+            <pre><code>селектор {
+    свойство: значение;
+    свойство: значение;
+}</code></pre>
+            <p><strong>Пример:</strong></p>
+            <pre><code>p {
+    color: blue;
+    font-size: 16px;
+}</code></pre>
+            <p>Это правило сделает весь текст внутри тегов <code>&lt;p&gt;</code> синим, размером 16 пикселей.</p>
+
+            <div class="lecture-note">
+                <strong>📓 Из тетради:</strong> «CSS — это как косметика для сайта. HTML создаёт лицо, а CSS его красит. Без одного не работает другое. Учите оба языка в связке».
+            </div>
+        </div>
+
+        <!-- Навигация "Вперёд/Назад" для последовательного изучения -->
+        <div class="lecture-nav">
+            <a href="/lectures/web/html/lecture-html-13.html" class="next">← Спецсимволы</a>
+            <a href="/lectures/web/css/lecture-css-1.html" class="next">Селекторы →</a>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <p>📝 Весь контент — мои личные записи, комментарии и шпаргалки. Я не копирайтер, я практик.</p>
+    </div>
+</body>
+
+</html>
