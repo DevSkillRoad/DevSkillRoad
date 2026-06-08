@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DevSkillRoad — Псевдоклассы. Часть 1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-top">
+            <a href="/" class="logo-link">
+                <div class="logo-image"></div>
+            </a>
+            <a href="/" class="title-link">
+                <div class="title">
+                    <h1>DevSkillRoad</h1>
+                </div>
+            </a>
+        </div>
+        
+        <nav class="main-nav">
+            <div class="dropdown">
+                <button class="dropbtn">📚 Лекции HTML</button>
+                <div class="dropdown-content">
+                    <a href="/lectures/web/html/intro-html.html">📖 Введение в HTML</a>
+                    <a href="/lectures/web/html/lecture-html-1.html">Основы HTML</a>
+                    <a href="/lectures/web/html/lecture-html-2.html">Блочные и строчные</a>
+                    <a href="/lectures/web/html/lecture-html-3.html">Заголовки h1–h6</a>
+                    <a href="/lectures/web/html/lecture-html-4.html">Текстовые теги</a>
+                    <a href="/lectures/web/html/lecture-html-5.html">Смысловое выделение</a>
+                    <a href="/lectures/web/html/lecture-html-6.html">Списки</a>
+                    <a href="/lectures/web/html/lecture-html-7.html">Ссылки</a>
+                    <a href="/lectures/web/html/lecture-html-8.html">Изображения</a>
+                    <a href="/lectures/web/html/lecture-html-9.html">Таблицы</a>
+                    <a href="/lectures/web/html/lecture-html-10.html">Формы</a>
+                    <a href="/lectures/web/html/lecture-html-11.html">Семантические теги</a>
+                    <a href="/lectures/web/html/lecture-html-12.html">Медиа</a>
+                    <a href="/lectures/web/html/lecture-html-13.html">Спецсимволы</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="content">
+        <div class="lecture-nav">
+            <a href="/lectures/web/css/lecture-css-15.html" class="prev">← Трансформации</a>
+            <span class="next disabled">Следующая лекция →</span>
+        </div>
+
+        <h1 class="lecture-title">Псевдоклассы. Часть 1</h1>
+        
+        <div class="lecture-meta">
+            🖱️ :hover, :active, :focus, :first-child, :last-child
+        </div>
+
+        <div class="lecture-content">
+            <p>Псевдоклассы — это ключевые слова, которые добавляются к селектору и определяют особое состояние элемента. Например, наведение мыши, клик, фокус, позиция среди других элементов.</p>
+            <p>Синтаксис: <code>селектор:псевдокласс { ... }</code></p>
+
+            <h2>1. :hover — при наведении мыши</h2>
+            <p>Срабатывает, когда пользователь наводит курсор на элемент.</p>
+            <pre><code>.button:hover {
+    background-color: #14b8a6;
+    color: white;
+}</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-hover {
+                        background-color: #530899;
+                        color: white;
+                        padding: 10px 20px;
+                        border-radius: 8px;
+                        display: inline-block;
+                        transition: 0.3s;
+                    }
+                    .demo-hover:hover {
+                        background-color: #14b8a6;
+                        transform: scale(1.05);
+                    }
+                </style>
+                <div class="demo-hover">Наведи на меня</div>
+                <p style="margin-top: 5px;">✅ При наведении меняется цвет фона и размер</p>
+            </div>
+
+            <h2>2. :active — в момент клика</h2>
+            <p>Срабатывает в момент, когда элемент нажат (кнопка мыши зажата).</p>
+            <pre><code>.button:active {
+    transform: scale(0.95);
+}</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-active {
+                        background-color: #530899;
+                        color: white;
+                        padding: 10px 20px;
+                        border-radius: 8px;
+                        display: inline-block;
+                        transition: 0.05s;
+                        cursor: pointer;
+                    }
+                    .demo-active:active {
+                        transform: scale(0.95);
+                        background-color: #3a066b;
+                    }
+                </style>
+                <div class="demo-active">Нажми на меня</div>
+                <p style="margin-top: 5px;">✅ При клике кнопка слегка сжимается и темнеет</p>
+            </div>
+
+            <h2>3. :focus — при фокусе</h2>
+            <p>Срабатывает, когда элемент получает фокус (например, поле ввода выделено).</p>
+            <pre><code>input:focus {
+    outline: 2px solid #14b8a6;
+    border-color: #14b8a6;
+}</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-focus {
+                        padding: 8px;
+                        border: 2px solid #ccc;
+                        border-radius: 8px;
+                        transition: 0.2s;
+                    }
+                    .demo-focus:focus {
+                        outline: none;
+                        border-color: #14b8a6;
+                        box-shadow: 0 0 5px #14b8a6;
+                    }
+                </style>
+                <input type="text" class="demo-focus" placeholder="Кликни сюда">
+                <p style="margin-top: 5px;">✅ При фокусе у поля появляется бирюзовая подсветка</p>
+            </div>
+
+            <h2>4. :visited и :link — для ссылок</h2>
+            <p><code>:link</code> — непосещённая ссылка, <code>:visited</code> — уже посещённая.</p>
+            <pre><code>a:link {
+    color: #530899;
+}
+a:visited {
+    color: #14b8a6;
+}</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-link:link {
+                        color: #530899;
+                        text-decoration: none;
+                    }
+                    .demo-link:visited {
+                        color: #14b8a6;
+                    }
+                    .demo-link:hover {
+                        text-decoration: underline;
+                    }
+                </style>
+                <a href="/index.html" class="demo-link" target="_blank">Непосещённая ссылка (фиолетовая)</a>
+                <p style="margin-top: 5px;">✅ Посещённые ссылки становятся бирюзовыми (зависит от истории браузера)</p>
+            </div>
+
+            <h2>5. :first-child — первый элемент внутри родителя</h2>
+            <p>Выбирает элемент, который является первым среди своих соседей.</p>
+            <pre><code>li:first-child {
+    color: #14b8a6;
+    font-weight: bold;
+}</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-first li:first-child {
+                        color: #14b8a6;
+                        font-weight: bold;
+                    }
+                </style>
+                <ul class="demo-first">
+                    <li>Первый пункт (будет выделен)</li>
+                    <li>Второй пункт</li>
+                    <li>Третий пункт</li>
+                </ul>
+                <p style="margin-top: 5px;">✅ Первый пункт списка выделен цветом и жирным</p>
+            </div>
+
+            <h2>6. :last-child — последний элемент внутри родителя</h2>
+            <p>Выбирает элемент, который является последним среди своих соседей.</p>
+            <pre><code>li:last-child {
+    color: #14b8a6;
+    font-weight: bold;
+}</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-last li:last-child {
+                        color: #14b8a6;
+                        font-weight: bold;
+                    }
+                </style>
+                <ul class="demo-last">
+                    <li>Первый пункт</li>
+                    <li>Второй пункт</li>
+                    <li>Третий пункт (будет выделен)</li>
+                </ul>
+                <p style="margin-top: 5px;">✅ Последний пункт списка выделен цветом и жирным</p>
+            </div>
+
+            <div class="lecture-note">
+                <strong>📓 Из тетради:</strong> «Псевдоклассы — это глаза и уши сайта. Они реагируют на действия пользователя. :hover для наведения, :active для клика, :focus для полей ввода. Освоите их — сделаете сайт интерактивным».
+            </div>
+        </div>
+
+        <div class="lecture-nav">
+            <a href="/lectures/web/css/lecture-css-15.html" class="prev">← Трансформации</a>
+            <span class="next disabled">Следующая лекция →</span>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <p>📝 Весь контент — мои личные записи, комментарии и шпаргалки. Я не копирайтер, я практик.</p>
+    </div>
+</body>
+
+</html>
