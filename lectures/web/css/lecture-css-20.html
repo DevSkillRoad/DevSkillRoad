@@ -21,7 +21,7 @@
                 </div>
             </a>
         </div>
-        
+
         <nav class="main-nav">
             <div class="dropdown">
                 <button class="dropbtn">📚 Лекции HTML</button>
@@ -52,20 +52,23 @@
         </div>
 
         <h1 class="lecture-title">Переходы в CSS</h1>
-        
+
         <div class="lecture-meta">
             ✨ transition: плавные изменения свойств
         </div>
 
         <div class="lecture-content">
-            <p>Переходы (transitions) позволяют сделать изменение свойств элемента плавным, а не мгновенным. Например, при наведении на кнопку она может плавно менять цвет фона или увеличиваться.</p>
+            <p>Переходы (transitions) позволяют сделать изменение свойств элемента плавным, а не мгновенным. Например,
+                при наведении на кнопку она может плавно менять цвет фона или увеличиваться.</p>
 
             <h2>1. transition-property — какие свойства анимировать</h2>
             <p>Указывает, какие свойства CSS будут участвовать в переходе.</p>
             <p><strong>Возможные значения:</strong></p>
             <ul>
                 <li><code>all</code> — все изменяющиеся свойства (по умолчанию)</li>
-                <li><code>название свойства</code> — например, <code>background-color</code>, <code>transform</code>, <code>opacity</code></li>
+                <li><code>название свойства</code> — например, <code>background-color</code>, <code>transform</code>,
+                    <code>opacity</code>
+                </li>
                 <li><code>none</code> — никакие свойства не анимируются</li>
             </ul>
             <pre><code>.button {
@@ -73,7 +76,8 @@
 }</code></pre>
 
             <h2>2. transition-duration — длительность перехода</h2>
-            <p>Задаёт время, за которое произойдёт переход. Указывается в секундах (<code>s</code>) или миллисекундах (<code>ms</code>).</p>
+            <p>Задаёт время, за которое произойдёт переход. Указывается в секундах (<code>s</code>) или миллисекундах
+                (<code>ms</code>).</p>
             <pre><code>.button {
     transition-duration: 0.3s;  /* 300 миллисекунд */
 }</code></pre>
@@ -128,6 +132,7 @@
                         cursor: pointer;
                         transition: background-color 0.3s ease;
                     }
+
                     .demo-btn1:hover {
                         background-color: #14b8a6;
                     }
@@ -155,6 +160,7 @@
                         transition: transform 0.2s ease;
                         display: inline-block;
                     }
+
                     .demo-btn2:hover {
                         transform: scale(1.1);
                     }
@@ -183,10 +189,11 @@
                         cursor: pointer;
                         transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
                     }
+
                     .demo-btn3:hover {
                         background-color: #14b8a6;
                         transform: scale(1.05);
-                        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
                     }
                 </style>
                 <button class="demo-btn3">Наведи на меня</button>
@@ -211,16 +218,38 @@
                         opacity: 0.3;
                         transition: opacity 0.5s ease 0.2s;
                     }
+
                     .demo-box:hover {
                         opacity: 1;
                     }
                 </style>
                 <div class="demo-box">Наведи на меня — появлюсь через 0.2 секунды</div>
-                <p style="margin-top: 5px;">✅ При наведении блок становится полностью видимым с задержкой 0.2 секунды</p>
+                <p style="margin-top: 5px;">✅ При наведении блок становится полностью видимым с задержкой 0.2 секунды
+                </p>
+            </div>
+
+            <h2>7. scroll-behavior — плавная прокрутка</h2>
+            <p>Определяет, как будет происходить прокрутка страницы при переходе по якорным ссылкам (например,
+                <code>&lt;a href="#section"&gt;</code>).</p>
+            <p><strong>Возможные значения:</strong></p>
+            <ul>
+                <li><code>auto</code> — мгновенная прокрутка (значение по умолчанию)</li>
+                <li><code>smooth</code> — плавная прокрутка</li>
+            </ul>
+            <pre><code>html {
+    scroll-behavior: smooth;
+}</code></pre>
+            <div class="lecture-note">
+                📌 Достаточно добавить это правило один раз на весь сайт. При клике на ссылку типа
+                <code>&lt;a href="#section"&gt;</code> страница будет плавно прокручиваться к нужному элементу. Значение
+                <code>auto</code> — поведение по умолчанию (мгновенный переход), его можно не указывать.
             </div>
 
             <div class="lecture-note">
-                <strong>📓 Из тетради:</strong> «Переходы делают интерфейс живым и отзывчивым. Не переусердствуйте: 0.2–0.3 секунды — оптимальная длительность для большинства переходов. Слишком долгие анимации раздражают, слишком быстрые — незаметны. И помните: не все свойства можно анимировать (например, `display: none` не анимируется, используйте `opacity` и `visibility`).
+                <strong>📓 Из тетради:</strong> «Переходы делают интерфейс живым и отзывчивым. Не переусердствуйте:
+                0.2–0.3 секунды — оптимальная длительность для большинства переходов. Слишком долгие анимации
+                раздражают, слишком быстрые — незаметны. И помните: не все свойства можно анимировать (например,
+                `display: none` не анимируется, используйте `opacity` и `visibility`).
             </div>
         </div>
 
