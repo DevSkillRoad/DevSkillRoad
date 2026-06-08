@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DevSkillRoad — Анимации в CSS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-top">
+            <a href="/" class="logo-link">
+                <div class="logo-image"></div>
+            </a>
+            <a href="/" class="title-link">
+                <div class="title">
+                    <h1>DevSkillRoad</h1>
+                </div>
+            </a>
+        </div>
+        
+        <nav class="main-nav">
+            <div class="dropdown">
+                <button class="dropbtn">📚 Лекции HTML</button>
+                <div class="dropdown-content">
+                    <a href="/lectures/web/html/intro-html.html">📖 Введение в HTML</a>
+                    <a href="/lectures/web/html/lecture-html-1.html">Основы HTML</a>
+                    <a href="/lectures/web/html/lecture-html-2.html">Блочные и строчные</a>
+                    <a href="/lectures/web/html/lecture-html-3.html">Заголовки h1–h6</a>
+                    <a href="/lectures/web/html/lecture-html-4.html">Текстовые теги</a>
+                    <a href="/lectures/web/html/lecture-html-5.html">Смысловое выделение</a>
+                    <a href="/lectures/web/html/lecture-html-6.html">Списки</a>
+                    <a href="/lectures/web/html/lecture-html-7.html">Ссылки</a>
+                    <a href="/lectures/web/html/lecture-html-8.html">Изображения</a>
+                    <a href="/lectures/web/html/lecture-html-9.html">Таблицы</a>
+                    <a href="/lectures/web/html/lecture-html-10.html">Формы</a>
+                    <a href="/lectures/web/html/lecture-html-11.html">Семантические теги</a>
+                    <a href="/lectures/web/html/lecture-html-12.html">Медиа</a>
+                    <a href="/lectures/web/html/lecture-html-13.html">Спецсимволы</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="content">
+        <div class="lecture-nav">
+            <a href="/lectures/web/css/lecture-css-20.html" class="prev">← Переходы</a>
+            <span class="next disabled">Следующая лекция →</span>
+        </div>
+
+        <h1 class="lecture-title">Анимации в CSS</h1>
+        
+        <div class="lecture-meta">
+            🎬 @keyframes, animation-name, duration, iteration-count, direction, fill-mode
+        </div>
+
+        <div class="lecture-content">
+            <p>Анимации позволяют создавать сложные, повторяющиеся движения. В отличие от переходов (transition), которые реагируют на действие пользователя (например, наведение), анимации запускаются автоматически при загрузке страницы или по событию.</p>
+
+            <h2>1. @keyframes — определение анимации</h2>
+            <p>Правило <code>@keyframes</code> задаёт последовательность состояний (ключевых кадров) анимации.</p>
+            <pre><code>@keyframes имя-анимации {
+    0% { свойство: значение; }
+    50% { свойство: значение; }
+    100% { свойство: значение; }
+}</code></pre>
+            <ul>
+                <li><code>0%</code> — начало анимации</li>
+                <li><code>100%</code> — конец анимации</li>
+                <li>Можно использовать любое количество промежуточных точек (<code>20%</code>, <code>75%</code> и т.д.)</li>
+            </ul>
+            <div class="lecture-note">
+                📌 Вместо <code>0%</code> и <code>100%</code> можно использовать ключевые слова <code>from</code> и <code>to</code>.
+            </div>
+
+            <h2>2. animation-name и animation-duration</h2>
+            <p><code>animation-name</code> — задаёт имя анимации (должно совпадать с именем в <code>@keyframes</code>).<br>
+            <code>animation-duration</code> — задаёт длительность анимации (в секундах <code>s</code> или миллисекундах <code>ms</code>).</p>
+            <pre><code>.element {
+    animation-name: color-change;
+    animation-duration: 2s;
+}
+
+@keyframes color-change {
+    0% { background-color: #530899; }
+    50% { background-color: #14b8a6; }
+    100% { background-color: #530899; }
+}</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-animation1 {
+                        background-color: #530899;
+                        color: white;
+                        padding: 15px 20px;
+                        border-radius: 8px;
+                        display: inline-block;
+                        animation-name: color-change;
+                        animation-duration: 2s;
+                        animation-iteration-count: infinite;
+                    }
+                    @keyframes color-change {
+                        0% { background-color: #530899; }
+                        50% { background-color: #14b8a6; }
+                        100% { background-color: #530899; }
+                    }
+                </style>
+                <div class="demo-animation1">Цвет фона плавно меняется</div>
+                <p style="margin-top: 5px;">✅ Фон меняется каждые 2 секунды</p>
+            </div>
+
+            <h2>3. animation-iteration-count — количество повторов</h2>
+            <p>Задаёт, сколько раз повторится анимация.</p>
+            <p><strong>Возможные значения:</strong></p>
+            <ul>
+                <li><code>число</code> — конкретное количество (например, <code>3</code>)</li>
+                <li><code>infinite</code> — бесконечно</li>
+            </ul>
+            <pre><code>.element {
+    animation-iteration-count: 3;  /* повторится 3 раза */
+}</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-iteration {
+                        background-color: #530899;
+                        color: white;
+                        padding: 15px;
+                        border-radius: 8px;
+                        display: inline-block;
+                        animation-name: bounce;
+                        animation-duration: 0.5s;
+                        animation-iteration-count: 3;
+                    }
+                    @keyframes bounce {
+                        0%, 100% { transform: translateY(0); }
+                        50% { transform: translateY(-20px); }
+                    }
+                </style>
+                <div class="demo-iteration">Подпрыгну 3 раза</div>
+                <p style="margin-top: 5px;">✅ Анимация повторится ровно 3 раза и остановится</p>
+            </div>
+
+            <h2>4. animation-direction — направление анимации</h2>
+            <p>Задаёт направление воспроизведения анимации.</p>
+            <p><strong>Возможные значения:</strong></p>
+            <ul>
+                <li><code>normal</code> — от 0% к 100% (по умолчанию)</li>
+                <li><code>reverse</code> — от 100% к 0%</li>
+                <li><code>alternate</code> — чередование: сначала от 0% к 100%, затем обратно</li>
+                <li><code>alternate-reverse</code> — чередование, начиная с reverse</li>
+            </ul>
+            <pre><code>.element {
+    animation-direction: alternate;
+}</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-direction {
+                        background-color: #530899;
+                        color: white;
+                        padding: 15px;
+                        border-radius: 8px;
+                        display: inline-block;
+                        animation-name: slide;
+                        animation-duration: 1s;
+                        animation-iteration-count: 4;
+                        animation-direction: alternate;
+                    }
+                    @keyframes slide {
+                        from { transform: translateX(0); }
+                        to { transform: translateX(50px); }
+                    }
+                </style>
+                <div class="demo-direction">Двигаюсь туда-обратно</div>
+                <p style="margin-top: 5px;">✅ Анимация идёт вперёд, потом назад</p>
+            </div>
+
+            <h2>5. animation-timing-function — ускорение</h2>
+            <p>Определяет, как меняется скорость анимации на протяжении времени.</p>
+            <p><strong>Возможные значения:</strong></p>
+            <ul>
+                <li><code>ease</code> — медленно в начале, быстро в середине, медленно в конце (по умолчанию)</li>
+                <li><code>linear</code> — равномерно</li>
+                <li><code>ease-in</code> — медленно в начале</li>
+                <li><code>ease-out</code> — медленно в конце</li>
+                <li><code>ease-in-out</code> — медленно в начале и в конце</li>
+            </ul>
+
+            <div class="live-example">
+                <style>
+                    .demo-linear {
+                        background-color: #530899;
+                        color: white;
+                        padding: 8px 15px;
+                        border-radius: 8px;
+                        display: inline-block;
+                        animation: move-demo 2s linear infinite;
+                    }
+                    .demo-ease {
+                        background-color: #14b8a6;
+                        color: white;
+                        padding: 8px 15px;
+                        border-radius: 8px;
+                        display: inline-block;
+                        animation: move-demo 2s ease infinite;
+                    }
+                    @keyframes move-demo {
+                        from { transform: translateX(0); }
+                        to { transform: translateX(80px); }
+                    }
+                </style>
+                <div style="display: flex; gap: 20px; align-items: center;">
+                    <div class="demo-linear">linear</div>
+                    <div class="demo-ease">ease</div>
+                </div>
+                <p style="margin-top: 5px;">✅ linear — равномерно, ease — плавное ускорение и замедление</p>
+            </div>
+
+            <h2>6. animation-delay — задержка перед началом</h2>
+            <p>Задаёт время ожидания перед началом анимации.</p>
+            <div class="live-example">
+                <style>
+                    .demo-delay {
+                        background-color: #530899;
+                        color: white;
+                        padding: 15px 20px;
+                        border-radius: 8px;
+                        display: inline-block;
+                        animation: change-color 2s ease 1s forwards;
+                    }
+                    @keyframes change-color {
+                        from { background-color: #530899; }
+                        to { background-color: #14b8a6; }
+                    }
+                </style>
+                <div class="demo-delay">Цвет изменится через 1 секунду</div>
+                <p style="margin-top: 5px;">✅ Анимация начинается через 1 секунду после загрузки</p>
+            </div>
+
+            <h2>7. animation-fill-mode — что происходит до/после анимации</h2>
+            <p>Определяет, какие стили применяются к элементу вне времени воспроизведения анимации (до начала и после окончания).</p>
+            <p><strong>Возможные значения:</strong></p>
+            <ul>
+                <li><code>none</code> — по умолчанию (возвращается к исходным стилям)</li>
+                <li><code>forwards</code> — сохраняет стили последнего ключевого кадра (100%)</li>
+                <li><code>backwards</code> — применяет стили первого ключевого кадра (0%) ДО начала анимации (во время задержки)</li>
+                <li><code>both</code> — сочетает forwards и backwards</li>
+            </ul>
+
+            <div class="live-example">
+                <style>
+                    .fill-demo {
+                        background-color: #530899;
+                        color: white;
+                        padding: 10px;
+                        border-radius: 8px;
+                        margin-bottom: 5px;
+                    }
+                    @keyframes fill-keyframes {
+                        0% { background-color: #ffc107; transform: scale(0.9); color: black; }
+                        100% { background-color: #14b8a6; transform: scale(1.1); color: white; }
+                    }
+                    .fill-none { animation: fill-keyframes 3s ease 3s none; }
+                    .fill-forwards { animation: fill-keyframes 3s ease 3s forwards; }
+                    .fill-backwards { animation: fill-keyframes 3s ease 3s backwards; }
+                    .fill-both { animation: fill-keyframes 3s ease 3s both; }
+                </style>
+                <div style="background: #f0f0f0; padding: 10px; border-radius: 12px;">
+                    <div class="fill-demo fill-none"><strong>none</strong> — 3 сек ждёт (фиолетовый) → 3 сек анимация → возврат к фиолетовому</div>
+                    <div class="fill-demo fill-forwards"><strong>forwards</strong> — 3 сек ждёт (фиолетовый) → 3 сек анимация → 🟢 остаётся бирюзовым</div>
+                    <div class="fill-demo fill-backwards"><strong>backwards</strong> — 🟡 сразу жёлтый (3 сек) → 3 сек анимация → возврат к фиолетовому</div>
+                    <div class="fill-demo fill-both"><strong>both</strong> — 🟡 сразу жёлтый (3 сек) → 3 сек анимация → 🟢 остаётся бирюзовым</div>
+                </div>
+                <p style="margin-top: 5px;">✅ <strong>both</strong> = <strong>backwards</strong> (жёлтый во время задержки) + <strong>forwards</strong> (бирюзовый после окончания)</p>
+            </div>
+
+            <h2>8. Сокращённое свойство animation</h2>
+            <p>Объединяет все свойства анимации в одной строке.</p>
+            <p><strong>Синтаксис:</strong> <code>animation: имя длительность задержка ускорение количество направление fill-mode;</code></p>
+            <div class="live-example">
+                <style>
+                    .demo-short {
+                        background-color: #530899;
+                        color: white;
+                        padding: 15px 20px;
+                        border-radius: 8px;
+                        display: inline-block;
+                        animation: short-animation 1.5s 0.2s ease infinite alternate;
+                    }
+                    @keyframes short-animation {
+                        from { transform: scale(1); background-color: #530899; }
+                        to { transform: scale(1.1); background-color: #14b8a6; }
+                    }
+                </style>
+                <div class="demo-short">Всё в одной строке</div>
+                <p style="margin-top: 5px;">✅ Сокращённая запись</p>
+            </div>
+
+            <div class="lecture-note">
+                <strong>📓 Из тетради:</strong> «Анимации — мощный инструмент, но используйте их с умом. Слишком частая или долгая анимация может раздражать пользователя. Оптимальная длительность — 0.5–2 секунды. И не забывайте про `animation-fill-mode: forwards`, если хотите сохранить конечное состояние».
+            </div>
+        </div>
+
+        <div class="lecture-nav">
+            <a href="/lectures/web/css/lecture-css-20.html" class="prev">← Переходы</a>
+            <span class="next disabled">Следующая лекция →</span>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <p>📝 Весь контент — мои личные записи, комментарии и шпаргалки. Я не копирайтер, я практик.</p>
+    </div>
+</body>
+
+</html>
