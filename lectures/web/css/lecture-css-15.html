@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DevSkillRoad — Трансформации в CSS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-top">
+            <a href="/" class="logo-link">
+                <div class="logo-image"></div>
+            </a>
+            <a href="/" class="title-link">
+                <div class="title">
+                    <h1>DevSkillRoad</h1>
+                </div>
+            </a>
+        </div>
+        
+        <nav class="main-nav">
+            <div class="dropdown">
+                <button class="dropbtn">📚 Лекции HTML</button>
+                <div class="dropdown-content">
+                    <a href="/lectures/web/html/intro-html.html">📖 Введение в HTML</a>
+                    <a href="/lectures/web/html/lecture-html-1.html">Основы HTML</a>
+                    <a href="/lectures/web/html/lecture-html-2.html">Блочные и строчные</a>
+                    <a href="/lectures/web/html/lecture-html-3.html">Заголовки h1–h6</a>
+                    <a href="/lectures/web/html/lecture-html-4.html">Текстовые теги</a>
+                    <a href="/lectures/web/html/lecture-html-5.html">Смысловое выделение</a>
+                    <a href="/lectures/web/html/lecture-html-6.html">Списки</a>
+                    <a href="/lectures/web/html/lecture-html-7.html">Ссылки</a>
+                    <a href="/lectures/web/html/lecture-html-8.html">Изображения</a>
+                    <a href="/lectures/web/html/lecture-html-9.html">Таблицы</a>
+                    <a href="/lectures/web/html/lecture-html-10.html">Формы</a>
+                    <a href="/lectures/web/html/lecture-html-11.html">Семантические теги</a>
+                    <a href="/lectures/web/html/lecture-html-12.html">Медиа</a>
+                    <a href="/lectures/web/html/lecture-html-13.html">Спецсимволы</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="content">
+        <div class="lecture-nav">
+            <a href="/lectures/web/css/lecture-css-14.html" class="prev">← Фоны и градиенты</a>
+            <span class="next disabled">Следующая лекция →</span>
+        </div>
+
+        <h1 class="lecture-title">Трансформации в CSS</h1>
+        
+        <div class="lecture-meta">
+            🔄 transform: translate, rotate, scale, skew
+        </div>
+
+        <div class="lecture-content">
+            <p>Трансформации позволяют изменять положение, размер, угол наклона и поворот элемента. Они не влияют на соседние элементы (как при `position: relative`).</p>
+
+            <h2>1. translate() — перемещение</h2>
+            <p>Сдвигает элемент относительно его исходного положения. Значения могут быть в пикселях, процентах, `em`, `rem`.</p>
+            <p><strong>Возможные варианты:</strong></p>
+            <ul>
+                <li><code>translate(x, y)</code> — сдвиг по горизонтали и вертикали</li>
+                <li><code>translateX(x)</code> — только по горизонтали</li>
+                <li><code>translateY(y)</code> — только по вертикали</li>
+            </ul>
+            <pre><code>.translate {
+    transform: translate(20px, 30px);
+}</code></pre>
+            <div class="live-example">
+                <div style="background: #f0f0f0; padding: 20px;">
+                    <div style="background: #530899; color: white; padding: 10px; display: inline-block;">Исходное положение</div>
+                </div>
+                <div style="background: #f0f0f0; padding: 20px; margin-top: 10px;">
+                    <div style="background: #14b8a6; color: white; padding: 10px; display: inline-block; transform: translate(20px, 30px);">
+                        transform: translate(20px, 30px)
+                    </div>
+                </div>
+                <p style="margin-top: 5px;">✅ Элемент сдвинут на 20px вправо и 30px вниз</p>
+            </div>
+
+            <h2>2. rotate() — поворот</h2>
+            <p>Поворачивает элемент вокруг своей оси. Значения в градусах (<code>deg</code>), оборотах (<code>turn</code>), радианах (<code>rad</code>).</p>
+            <pre><code>.rotate {
+    transform: rotate(15deg);
+}</code></pre>
+            <div class="live-example">
+                <div style="background: #f0f0f0; padding: 20px;">
+                    <div style="background: #530899; color: white; padding: 10px; display: inline-block;">Исходный элемент</div>
+                </div>
+                <div style="background: #f0f0f0; padding: 20px; margin-top: 10px;">
+                    <div style="background: #14b8a6; color: white; padding: 10px; display: inline-block; transform: rotate(15deg);">
+                        transform: rotate(15deg)
+                    </div>
+                </div>
+                <p style="margin-top: 5px;">✅ Элемент повёрнут на 15 градусов</p>
+            </div>
+
+            <h2>3. scale() — масштабирование</h2>
+            <p>Увеличивает или уменьшает элемент. Значения: 1 — исходный размер, больше 1 — увеличение, меньше 1 — уменьшение.</p>
+            <p><strong>Возможные варианты:</strong></p>
+            <ul>
+                <li><code>scale(x, y)</code> — масштаб по горизонтали и вертикали</li>
+                <li><code>scaleX(x)</code> — только по горизонтали</li>
+                <li><code>scaleY(y)</code> — только по вертикали</li>
+            </ul>
+            <pre><code>.scale-up {
+    transform: scale(1.5);
+}
+.scale-down {
+    transform: scale(0.7);
+}</code></pre>
+            <div class="live-example">
+                <div style="background: #f0f0f0; padding: 20px;">
+                    <div style="background: #530899; color: white; padding: 10px; display: inline-block;">Исходный (1.0)</div>
+                    <div style="background: #14b8a6; color: white; padding: 10px; display: inline-block; transform: scale(1.5); margin-left: 20px;">
+                        scale(1.5)
+                    </div>
+                    <div style="background: #ffc107; padding: 10px; display: inline-block; transform: scale(0.7); margin-left: 20px;">
+                        scale(0.7)
+                    </div>
+                </div>
+                <p style="margin-top: 5px;">✅ Первый увеличен в 1.5 раза, второй уменьшен до 0.7</p>
+            </div>
+
+            <h2>4. skew() — наклон</h2>
+            <p>Наклоняет элемент. Значения в градусах (<code>deg</code>).</p>
+            <p><strong>Возможные варианты:</strong></p>
+            <ul>
+                <li><code>skewX(x)</code> — наклон по горизонтали (верх сдвигается, низ остаётся)</li>
+                <li><code>skewY(y)</code> — наклон по вертикали (правый край сдвигается, левый остаётся)</li>
+                <li><code>skew(x, y)</code> — наклон по горизонтали и вертикали одновременно</li>
+            </ul>
+
+            <p><strong>skewX(10deg) — наклон по горизонтали</strong></p>
+            <pre><code>.skew-x {
+    transform: skewX(10deg);
+}</code></pre>
+            <div class="live-example">
+                <div style="background: #f0f0f0; padding: 10px;">
+                    <div style="background: #530899; color: white; padding: 10px; display: inline-block; width: 120px; text-align: center;">Исходный</div>
+                    <div style="background: #14b8a6; color: white; padding: 10px; display: inline-block; width: 120px; text-align: center; transform: skewX(10deg); margin-left: 20px;">
+                        skewX(10deg)
+                    </div>
+                </div>
+                <p style="margin-top: 5px;">✅ Верх сдвинут вправо, низ остался на месте</p>
+            </div>
+
+            <p><strong>skewY(5deg) — наклон по вертикали</strong></p>
+            <pre><code>.skew-y {
+    transform: skewY(5deg);
+}</code></pre>
+            <div class="live-example">
+                <div style="background: #f0f0f0; padding: 10px;">
+                    <div style="background: #530899; color: white; padding: 10px; display: inline-block; width: 120px; text-align: center;">Исходный</div>
+                    <div style="background: #ffc107; padding: 10px; display: inline-block; width: 120px; text-align: center; transform: skewY(5deg); margin-left: 20px;">
+                        skewY(5deg)
+                    </div>
+                </div>
+                <p style="margin-top: 5px;">✅ Правый край сдвинут вниз, левый остался на месте</p>
+            </div>
+
+            <p><strong>skew(10deg, 5deg) — наклон по обеим осям</strong></p>
+            <pre><code>.skew-both {
+    transform: skew(10deg, 5deg);
+}</code></pre>
+            <div class="live-example">
+                <div style="background: #f0f0f0; padding: 10px;">
+                    <div style="background: #530899; color: white; padding: 10px; display: inline-block; width: 120px; text-align: center;">Исходный</div>
+                    <div style="background: #14b8a6; color: white; padding: 10px; display: inline-block; width: 120px; text-align: center; transform: skew(10deg, 5deg); margin-left: 20px;">
+                        skew(10deg, 5deg)
+                    </div>
+                </div>
+                <p style="margin-top: 5px;">✅ Наклон по горизонтали и вертикали одновременно</p>
+            </div>
+
+            <h2>5. transform-origin — точка трансформации</h2>
+            <p>Задаёт точку, относительно которой происходит трансформация (по умолчанию — центр элемента: <code>50% 50%</code>).</p>
+            <p><strong>Возможные значения:</strong> ключевые слова (<code>top</code>, <code>left</code>, <code>center</code>, <code>bottom</code>, <code>right</code>), проценты, пиксели.</p>
+            <pre><code>.rotate-center {
+    transform: rotate(15deg);
+    transform-origin: center;
+}
+.rotate-top-left {
+    transform: rotate(15deg);
+    transform-origin: top left;
+}</code></pre>
+            <div class="live-example">
+                <div style="background: #f0f0f0; padding: 20px; display: flex; gap: 20px;">
+                    <div style="text-align: center;">
+                        <div style="background: #530899; color: white; padding: 20px; display: inline-block; transform: rotate(15deg); transform-origin: center;">
+                            центр
+                        </div>
+                        <p style="margin-top: 5px;">transform-origin: center</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="background: #14b8a6; color: white; padding: 20px; display: inline-block; transform: rotate(15deg); transform-origin: top left;">
+                            top left
+                        </div>
+                        <p style="margin-top: 5px;">transform-origin: top left</p>
+                    </div>
+                </div>
+                <p style="margin-top: 5px;">✅ Поворот относительно центра (левый блок) и относительно левого верхнего угла (правый блок)</p>
+            </div>
+
+            <h2>6. Несколько трансформаций одновременно</h2>
+            <p>Можно применять несколько трансформаций к одному элементу. Они применяются по порядку справа налево.</p>
+            <pre><code>.multiple {
+    transform: translate(50px, 0) rotate(15deg) scale(1.2);
+}</code></pre>
+            <div class="live-example">
+                <div style="background: #f0f0f0; padding: 20px;">
+                    <div style="background: #530899; color: white; padding: 10px; display: inline-block;">Исходный</div>
+                </div>
+                <div style="background: #f0f0f0; padding: 20px; margin-top: 10px;">
+                    <div style="background: #14b8a6; color: white; padding: 10px; display: inline-block; transform: translate(50px, 0) rotate(15deg) scale(1.2);">
+                        translate + rotate + scale
+                    </div>
+                </div>
+                <p style="margin-top: 5px;">✅ Элемент сдвинут, повёрнут и увеличен</p>
+            </div>
+            <div class="lecture-note">
+                📌 <strong>Важно:</strong> Порядок трансформаций имеет значение. Например, <code>translate</code> после <code>rotate</code> сдвинет элемент уже повёрнутым, что может изменить направление сдвига.
+            </div>
+
+            <div class="lecture-note">
+                <strong>📓 Из тетради:</strong> «Трансформации не меняют положение других элементов на странице. Они только двигают, поворачивают и масштабируют сам элемент. Используйте их для оживления интерфейса, но не для построения сетки — для сетки есть Flexbox и Grid».
+            </div>
+        </div>
+
+        <div class="lecture-nav">
+            <a href="/lectures/web/css/lecture-css-14.html" class="prev">← Фоны и градиенты</a>
+            <span class="next disabled">Следующая лекция →</span>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <p>📝 Весь контент — мои личные записи, комментарии и шпаргалки. Я не копирайтер, я практик.</p>
+    </div>
+</body>
+
+</html>
