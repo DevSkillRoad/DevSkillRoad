@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>DevSkillRoad — Трансформации в CSS</title>
+    <title>DevSkillRoad — Тени и эффекты в CSS</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
@@ -48,193 +48,226 @@
     <div class="content">
         <div class="lecture-nav">
             <a href="/lectures/web/css/lecture-css-14.html" class="prev">← Фоны и градиенты</a>
-            <a href="/lectures/web/css/lecture-css-16.html" class="next">Псевдоклассы. Часть 1 →</a>
+            <span class="next disabled">Следующая лекция →</span>
         </div>
 
-        <h1 class="lecture-title">Трансформации в CSS</h1>
+        <h1 class="lecture-title">Тени и эффекты в CSS</h1>
         
         <div class="lecture-meta">
-            🔄 transform: translate, rotate, scale, skew
+            ✨ box-shadow, text-shadow, filter
         </div>
 
         <div class="lecture-content">
-            <p>Трансформации позволяют изменять положение, размер, угол наклона и поворот элемента. Они не влияют на соседние элементы (как при `position: relative`).</p>
+            <p>В этой лекции разберём способы добавления теней и фильтров к элементам и тексту.</p>
 
-            <h2>1. translate() — перемещение</h2>
-            <p>Сдвигает элемент относительно его исходного положения. Значения могут быть в пикселях, процентах, `em`, `rem`.</p>
-            <p><strong>Возможные варианты:</strong></p>
+            <h2>1. box-shadow — тень блока</h2>
+            <p>Добавляет тень элементу. В отличие от <code>border</code>, тень не увеличивает размер элемента и не влияет на расположение соседей.</p>
+            <p><strong>Синтаксис:</strong> <code>box-shadow: смещение-x смещение-y размытие цвет;</code></p>
+            <p><strong>Параметры:</strong></p>
             <ul>
-                <li><code>translate(x, y)</code> — сдвиг по горизонтали и вертикали</li>
-                <li><code>translateX(x)</code> — только по горизонтали</li>
-                <li><code>translateY(y)</code> — только по вертикали</li>
+                <li><code>смещение-x</code> — на сколько пикселей тень сдвинута вправо (отрицательное — влево)</li>
+                <li><code>смещение-y</code> — на сколько пикселей тень сдвинута вниз (отрицательное — вверх)</li>
+                <li><code>размытие</code> — насколько тень размыта (чем больше, тем мягче)</li>
+                <li><code>цвет</code> — цвет тени (обычно с прозрачностью, например <code>rgba(0,0,0,0.2)</code>)</li>
             </ul>
-            <pre><code>.translate {
-    transform: translate(20px, 30px);
+            <pre><code>.shadow {
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
 }</code></pre>
             <div class="live-example">
-                <div style="background: #f0f0f0; padding: 20px;">
-                    <div style="background: #530899; color: white; padding: 10px; display: inline-block;">Исходное положение</div>
-                </div>
-                <div style="background: #f0f0f0; padding: 20px; margin-top: 10px;">
-                    <div style="background: #14b8a6; color: white; padding: 10px; display: inline-block; transform: translate(20px, 30px);">
-                        transform: translate(20px, 30px)
-                    </div>
-                </div>
-                <p style="margin-top: 5px;">✅ Элемент сдвинут на 20px вправо и 30px вниз</p>
+                <style>
+                    .demo-box-shadow {
+                        background-color: #530899;
+                        color: white;
+                        padding: 15px 20px;
+                        border-radius: 8px;
+                        display: inline-block;
+                        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+                    }
+                </style>
+                <div class="demo-box-shadow">Тень от блока</div>
+                <p style="margin-top: 5px;">✅ Тень смещена на 4px вниз и вправо, размыта на 10px</p>
             </div>
 
-            <h2>2. rotate() — поворот</h2>
-            <p>Поворачивает элемент вокруг своей оси. Значения в градусах (<code>deg</code>), оборотах (<code>turn</code>), радианах (<code>rad</code>).</p>
-            <pre><code>.rotate {
-    transform: rotate(15deg);
+            <p><strong>Внутренняя тень — inset</strong></p>
+            <p>Ключевое слово <code>inset</code> делает тень внутренней (рисует внутри элемента).</p>
+            <pre><code>.inset-shadow {
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
 }</code></pre>
             <div class="live-example">
-                <div style="background: #f0f0f0; padding: 20px;">
-                    <div style="background: #530899; color: white; padding: 10px; display: inline-block;">Исходный элемент</div>
-                </div>
-                <div style="background: #f0f0f0; padding: 20px; margin-top: 10px;">
-                    <div style="background: #14b8a6; color: white; padding: 10px; display: inline-block; transform: rotate(15deg);">
-                        transform: rotate(15deg)
-                    </div>
-                </div>
-                <p style="margin-top: 5px;">✅ Элемент повёрнут на 15 градусов</p>
-            </div>
-
-            <h2>3. scale() — масштабирование</h2>
-            <p>Увеличивает или уменьшает элемент. Значения: 1 — исходный размер, больше 1 — увеличение, меньше 1 — уменьшение.</p>
-            <p><strong>Возможные варианты:</strong></p>
-            <ul>
-                <li><code>scale(x, y)</code> — масштаб по горизонтали и вертикали</li>
-                <li><code>scaleX(x)</code> — только по горизонтали</li>
-                <li><code>scaleY(y)</code> — только по вертикали</li>
-            </ul>
-            <pre><code>.scale-up {
-    transform: scale(1.5);
-}
-.scale-down {
-    transform: scale(0.7);
-}</code></pre>
-            <div class="live-example">
-                <div style="background: #f0f0f0; padding: 20px;">
-                    <div style="background: #530899; color: white; padding: 10px; display: inline-block;">Исходный (1.0)</div>
-                    <div style="background: #14b8a6; color: white; padding: 10px; display: inline-block; transform: scale(1.5); margin-left: 20px;">
-                        scale(1.5)
-                    </div>
-                    <div style="background: #ffc107; padding: 10px; display: inline-block; transform: scale(0.7); margin-left: 20px;">
-                        scale(0.7)
-                    </div>
-                </div>
-                <p style="margin-top: 5px;">✅ Первый увеличен в 1.5 раза, второй уменьшен до 0.7</p>
-            </div>
-
-            <h2>4. skew() — наклон</h2>
-            <p>Наклоняет элемент. Значения в градусах (<code>deg</code>).</p>
-            <p><strong>Возможные варианты:</strong></p>
-            <ul>
-                <li><code>skewX(x)</code> — наклон по горизонтали (верх сдвигается, низ остаётся)</li>
-                <li><code>skewY(y)</code> — наклон по вертикали (правый край сдвигается, левый остаётся)</li>
-                <li><code>skew(x, y)</code> — наклон по горизонтали и вертикали одновременно</li>
-            </ul>
-
-            <p><strong>skewX(10deg) — наклон по горизонтали</strong></p>
-            <pre><code>.skew-x {
-    transform: skewX(10deg);
-}</code></pre>
-            <div class="live-example">
-                <div style="background: #f0f0f0; padding: 10px;">
-                    <div style="background: #530899; color: white; padding: 10px; display: inline-block; width: 120px; text-align: center;">Исходный</div>
-                    <div style="background: #14b8a6; color: white; padding: 10px; display: inline-block; width: 120px; text-align: center; transform: skewX(10deg); margin-left: 20px;">
-                        skewX(10deg)
-                    </div>
-                </div>
-                <p style="margin-top: 5px;">✅ Верх сдвинут вправо, низ остался на месте</p>
-            </div>
-
-            <p><strong>skewY(5deg) — наклон по вертикали</strong></p>
-            <pre><code>.skew-y {
-    transform: skewY(5deg);
-}</code></pre>
-            <div class="live-example">
-                <div style="background: #f0f0f0; padding: 10px;">
-                    <div style="background: #530899; color: white; padding: 10px; display: inline-block; width: 120px; text-align: center;">Исходный</div>
-                    <div style="background: #ffc107; padding: 10px; display: inline-block; width: 120px; text-align: center; transform: skewY(5deg); margin-left: 20px;">
-                        skewY(5deg)
-                    </div>
-                </div>
-                <p style="margin-top: 5px;">✅ Правый край сдвинут вниз, левый остался на месте</p>
-            </div>
-
-            <p><strong>skew(10deg, 5deg) — наклон по обеим осям</strong></p>
-            <pre><code>.skew-both {
-    transform: skew(10deg, 5deg);
-}</code></pre>
-            <div class="live-example">
-                <div style="background: #f0f0f0; padding: 10px;">
-                    <div style="background: #530899; color: white; padding: 10px; display: inline-block; width: 120px; text-align: center;">Исходный</div>
-                    <div style="background: #14b8a6; color: white; padding: 10px; display: inline-block; width: 120px; text-align: center; transform: skew(10deg, 5deg); margin-left: 20px;">
-                        skew(10deg, 5deg)
-                    </div>
-                </div>
-                <p style="margin-top: 5px;">✅ Наклон по горизонтали и вертикали одновременно</p>
-            </div>
-
-            <h2>5. transform-origin — точка трансформации</h2>
-            <p>Задаёт точку, относительно которой происходит трансформация (по умолчанию — центр элемента: <code>50% 50%</code>).</p>
-            <p><strong>Возможные значения:</strong> ключевые слова (<code>top</code>, <code>left</code>, <code>center</code>, <code>bottom</code>, <code>right</code>), проценты, пиксели.</p>
-            <pre><code>.rotate-center {
-    transform: rotate(15deg);
-    transform-origin: center;
-}
-.rotate-top-left {
-    transform: rotate(15deg);
-    transform-origin: top left;
-}</code></pre>
-            <div class="live-example">
-                <div style="background: #f0f0f0; padding: 20px; display: flex; gap: 20px;">
-                    <div style="text-align: center;">
-                        <div style="background: #530899; color: white; padding: 20px; display: inline-block; transform: rotate(15deg); transform-origin: center;">
-                            центр
-                        </div>
-                        <p style="margin-top: 5px;">transform-origin: center</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="background: #14b8a6; color: white; padding: 20px; display: inline-block; transform: rotate(15deg); transform-origin: top left;">
-                            top left
-                        </div>
-                        <p style="margin-top: 5px;">transform-origin: top left</p>
-                    </div>
-                </div>
-                <p style="margin-top: 5px;">✅ Поворот относительно центра (левый блок) и относительно левого верхнего угла (правый блок)</p>
-            </div>
-
-            <h2>6. Несколько трансформаций одновременно</h2>
-            <p>Можно применять несколько трансформаций к одному элементу. Они применяются по порядку справа налево.</p>
-            <pre><code>.multiple {
-    transform: translate(50px, 0) rotate(15deg) scale(1.2);
-}</code></pre>
-            <div class="live-example">
-                <div style="background: #f0f0f0; padding: 20px;">
-                    <div style="background: #530899; color: white; padding: 10px; display: inline-block;">Исходный</div>
-                </div>
-                <div style="background: #f0f0f0; padding: 20px; margin-top: 10px;">
-                    <div style="background: #14b8a6; color: white; padding: 10px; display: inline-block; transform: translate(50px, 0) rotate(15deg) scale(1.2);">
-                        translate + rotate + scale
-                    </div>
-                </div>
-                <p style="margin-top: 5px;">✅ Элемент сдвинут, повёрнут и увеличен</p>
-            </div>
-            <div class="lecture-note">
-                📌 <strong>Важно:</strong> Порядок трансформаций имеет значение. Например, <code>translate</code> после <code>rotate</code> сдвинет элемент уже повёрнутым, что может изменить направление сдвига.
+                <style>
+                    .demo-inset-shadow {
+                        background-color: #530899;
+                        color: white;
+                        padding: 15px 20px;
+                        border-radius: 8px;
+                        display: inline-block;
+                        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+                    }
+                </style>
+                <div class="demo-inset-shadow">Внутренняя тень</div>
+                <p style="margin-top: 5px;">✅ Тень внутри элемента, создаёт эффект углубления</p>
             </div>
 
             <div class="lecture-note">
-                <strong>📓 Из тетради:</strong> «Трансформации не меняют положение других элементов на странице. Они только двигают, поворачивают и масштабируют сам элемент. Используйте их для оживления интерфейса, но не для построения сетки — для сетки есть Flexbox и Grid».
+                📌 <strong>Отличие от border:</strong> <code>border</code> увеличивает размер элемента. <code>box-shadow</code> не влияет на размер и расположение, но может накладываться на соседние элементы.
+            </div>
+
+            <h2>2. text-shadow — тень текста</h2>
+            <p>Добавляет тень к тексту. Синтаксис похож на <code>box-shadow</code>, но нет параметра размера тени.</p>
+            <p><strong>Синтаксис:</strong> <code>text-shadow: смещение-x смещение-y размытие цвет;</code></p>
+            <pre><code>.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-text-shadow {
+                        font-size: 24px;
+                        font-weight: bold;
+                        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+                    }
+                </style>
+                <div class="demo-text-shadow">Текст с тенью</div>
+                <p style="margin-top: 5px;">✅ У текста появилась мягкая тень</p>
+            </div>
+
+            <p><strong>Несколько теней одновременно</strong></p>
+            <p>Можно добавить несколько теней через запятую. Например, две цветные тени для эффекта тиснения.</p>
+            <pre><code>.multiple-shadows {
+    background-color: white;
+    color: #530899;
+    text-shadow: 2px 2px 4px #14b8a6,
+                 -2px -2px 4px #ffc107;
+}</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-multiple-shadows {
+                        background-color: white;
+                        color: #530899;
+                        padding: 20px;
+                        font-size: 24px;
+                        font-weight: bold;
+                        border-radius: 12px;
+                        text-shadow: 2px 2px 4px #14b8a6, -2px -2px 4px #ffc107;
+                    }
+                </style>
+                <div class="demo-multiple-shadows">Эффект тиснения цветными тенями</div>
+                <p style="margin-top: 5px;">✅ Бирюзовая тень снизу-справа, жёлтая сверху-слева</p>
+            </div>
+
+            <h2>3. filter — фильтры</h2>
+            <p>Фильтры позволяют применять к элементу графические эффекты, такие как размытие, изменение яркости, контрастности и другие.</p>
+            <p><strong>Возможные значения:</strong></p>
+            <ul>
+                <li><code>blur(px)</code> — размытие</li>
+                <li><code>brightness(%)</code> — яркость (0% — чёрный, 100% — оригинал, >100% — ярче)</li>
+                <li><code>contrast(%)</code> — контрастность</li>
+                <li><code>grayscale(%)</code> — чёрно-белый (100% — полностью ч/б)</li>
+                <li><code>drop-shadow()</code> — тень (аналог box-shadow)</li>
+            </ul>
+
+            <p><strong>Пример 1: размытие (blur)</strong></p>
+            <pre><code>.blur {
+    filter: blur(4px);
+}</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-blur {
+                        background-color: #530899;
+                        color: white;
+                        padding: 15px;
+                        border-radius: 8px;
+                        display: inline-block;
+                        filter: blur(4px);
+                    }
+                </style>
+                <div class="demo-blur">Размытый текст</div>
+                <p style="margin-top: 5px;">✅ Элемент размыт</p>
+            </div>
+
+            <p><strong>Пример 2: чёрно-белый (grayscale)</strong></p>
+            <pre><code>.grayscale {
+    filter: grayscale(100%);
+}</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-grayscale {
+                        background-color: #530899;
+                        color: white;
+                        padding: 15px;
+                        border-radius: 8px;
+                        display: inline-block;
+                        filter: grayscale(100%);
+                    }
+                </style>
+                <div class="demo-grayscale">Чёрно-белый блок</div>
+                <p style="margin-top: 5px;">✅ Цвета стали серыми</p>
+            </div>
+
+            <p><strong>Пример 3: яркость (brightness)</strong></p>
+            <pre><code>.bright {
+    filter: brightness(150%);
+}</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-bright {
+                        background-color: #530899;
+                        color: white;
+                        padding: 15px;
+                        border-radius: 8px;
+                        display: inline-block;
+                        filter: brightness(150%);
+                    }
+                </style>
+                <div class="demo-bright">Увеличенная яркость</div>
+                <p style="margin-top: 5px;">✅ Блок стал светлее</p>
+            </div>
+
+            <p><strong>Пример 4: тень через drop-shadow</strong></p>
+            <pre><code>.drop-shadow {
+    filter: drop-shadow(4px 4px 6px rgba(0,0,0,0.3));
+}</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-drop-shadow {
+                        background-color: #530899;
+                        color: white;
+                        padding: 15px;
+                        border-radius: 8px;
+                        display: inline-block;
+                        filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.3));
+                    }
+                </style>
+                <div class="demo-drop-shadow">Тень через filter</div>
+                <p style="margin-top: 5px;">✅ То же, что box-shadow, но через filter</p>
+            </div>
+
+            <p><strong>Пример 5: комбинация фильтров</strong></p>
+            <pre><code>.combined {
+    filter: brightness(120%) contrast(150%) grayscale(50%);
+}</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-combined {
+                        background-color: #530899;
+                        color: white;
+                        padding: 15px;
+                        border-radius: 8px;
+                        display: inline-block;
+                        filter: brightness(120%) contrast(150%) grayscale(50%);
+                    }
+                </style>
+                <div class="demo-combined">Комбинация фильтров</div>
+                <p style="margin-top: 5px;">✅ Применены сразу три фильтра</p>
+            </div>
+
+            <div class="lecture-note">
+                <strong>📓 Из тетради:</strong> «Тени и фильтры — это быстрый способ сделать дизайн выразительнее. Но не переусердствуйте: слишком много теней или сильное размытие мешают читать контент. А фильтры могут замедлять страницу, если их много».
             </div>
         </div>
 
         <div class="lecture-nav">
             <a href="/lectures/web/css/lecture-css-14.html" class="prev">← Фоны и градиенты</a>
-            <a href="/lectures/web/css/lecture-css-16.html" class="next">Псевдоклассы. Часть 1 →</a>
+            <span class="next disabled">Следующая лекция →</span>
         </div>
     </div>
 

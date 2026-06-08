@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>DevSkillRoad — Переходы в CSS</title>
+    <title>DevSkillRoad — Псевдоэлементы в CSS</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
@@ -47,186 +47,151 @@
 
     <div class="content">
         <div class="lecture-nav">
-            <a href="/lectures/web/css/lecture-css-18.html" class="prev">← Псевдоэлементы</a>
-            <span class="next disabled">Следующая лекция →</span>
+            <a href="/lectures/web/css/lecture-css-18.html" class="prev">← Псевдоклассы. Часть 2</a>
+            <a href="/lectures/web/css/lecture-css-20.html" class="next">Переходы →</a>
         </div>
 
-        <h1 class="lecture-title">Переходы в CSS</h1>
+        <h1 class="lecture-title">Псевдоэлементы в CSS</h1>
         
         <div class="lecture-meta">
-            ✨ transition: плавные изменения свойств
+            ✨ ::before, ::after, ::first-letter, ::first-line, ::selection
         </div>
 
         <div class="lecture-content">
-            <p>Переходы (transitions) позволяют сделать изменение свойств элемента плавным, а не мгновенным. Например, при наведении на кнопку она может плавно менять цвет фона или увеличиваться.</p>
+            <p>Псевдоэлементы позволяют стилизовать части элемента или добавлять новое содержимое без изменения HTML. Отличаются от псевдоклассов двойным двоеточием <code>::</code>.</p>
 
-            <h2>1. transition-property — какие свойства анимировать</h2>
-            <p>Указывает, какие свойства CSS будут участвовать в переходе.</p>
-            <p><strong>Возможные значения:</strong></p>
-            <ul>
-                <li><code>all</code> — все изменяющиеся свойства (по умолчанию)</li>
-                <li><code>название свойства</code> — например, <code>background-color</code>, <code>transform</code>, <code>opacity</code></li>
-                <li><code>none</code> — никакие свойства не анимируются</li>
-            </ul>
-            <pre><code>.button {
-    transition-property: background-color, transform;
+            <h2>1. ::before и ::after — вставка содержимого</h2>
+            <p>Псевдоэлементы <code>::before</code> и <code>::after</code> вставляют содержимое до или после содержимого элемента. Обязательно требуется свойство <code>content</code>.</p>
+            
+            <p><strong>Пример 1: добавление иконки перед текстом</strong></p>
+            <pre><code>.note::before {
+    content: "📌 ";
+    color: #14b8a6;
+    font-weight: bold;
 }</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-before::before {
+                        content: "📌 ";
+                        color: #14b8a6;
+                        font-weight: bold;
+                    }
+                </style>
+                <div class="demo-before">Это важное примечание</div>
+                <p style="margin-top: 5px;">✅ Перед текстом появилась иконка и пробел</p>
+            </div>
 
-            <h2>2. transition-duration — длительность перехода</h2>
-            <p>Задаёт время, за которое произойдёт переход. Указывается в секундах (<code>s</code>) или миллисекундах (<code>ms</code>).</p>
-            <pre><code>.button {
-    transition-duration: 0.3s;  /* 300 миллисекунд */
+            <p><strong>Пример 2: добавление текста после элемента</strong></p>
+            <pre><code>.price::after {
+    content: " ₽";
 }</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-after::after {
+                        content: " ₽";
+                        color: #530899;
+                        font-weight: bold;
+                    }
+                </style>
+                <div class="demo-after">1000</div>
+                <p style="margin-top: 5px;">✅ После числа добавился символ валюты</p>
+            </div>
 
-            <h2>3. transition-timing-function — функция ускорения</h2>
-            <p>Определяет, как меняется скорость перехода во времени.</p>
-            <p><strong>Возможные значения:</strong></p>
-            <ul>
-                <li><code>ease</code> — медленно в начале, быстро в середине, медленно в конце (по умолчанию)</li>
-                <li><code>linear</code> — равномерно</li>
-                <li><code>ease-in</code> — медленно в начале</li>
-                <li><code>ease-out</code> — медленно в конце</li>
-                <li><code>ease-in-out</code> — медленно в начале и в конце</li>
-                <li><code>cubic-bezier()</code> — своя кривая ускорения (можно задать точные параметры)</li>
-            </ul>
-            <pre><code>.button {
-    transition-timing-function: ease-out;
+            <p><strong>Пример 3: декоративная линия через ::after</strong></p>
+            <pre><code>.title::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #14b8a6;
+    margin-top: 5px;
 }</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-line::after {
+                        content: "";
+                        display: block;
+                        width: 50px;
+                        height: 3px;
+                        background-color: #14b8a6;
+                        margin-top: 5px;
+                    }
+                </style>
+                <h3 class="demo-line">Заголовок с линией</h3>
+                <p style="margin-top: 5px;">✅ Под заголовком появилась декоративная линия</p>
+            </div>
 
-            <h2>4. transition-delay — задержка перед началом</h2>
-            <p>Задаёт время ожидания перед началом перехода.</p>
-            <pre><code>.button {
-    transition-delay: 0.2s;  /* начнётся через 0.2 секунды */
+            <h2>2. ::first-letter — первая буква</h2>
+            <p>Позволяет стилизовать первую букву текста внутри элемента.</p>
+            <pre><code>p::first-letter {
+    font-size: 2rem;
+    color: #14b8a6;
+    font-weight: bold;
 }</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-first-letter::first-letter {
+                        font-size: 2rem;
+                        color: #14b8a6;
+                        font-weight: bold;
+                    }
+                </style>
+                <p class="demo-first-letter">Этот абзац начинается с большой и красивой буквы.</p>
+                <p style="margin-top: 5px;">✅ Первая буква увеличена и выделена цветом</p>
+            </div>
 
-            <h2>5. Сокращённое свойство transition</h2>
-            <p>Объединяет все свойства перехода в одной строке.</p>
-            <p><strong>Синтаксис:</strong> <code>transition: свойство длительность задержка функция-ускорения</code></p>
-            <pre><code>.button {
-    transition: background-color 0.3s ease 0.1s;
+            <h2>3. ::first-line — первая строка</h2>
+            <p>Стилизует первую строку текста внутри элемента (зависит от ширины окна). Первая строка определяется браузером по переносам, а не по тегу <code>&lt;br&gt;</code>.</p>
+            <pre><code>p::first-line {
+    font-weight: bold;
+    color: #530899;
 }</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-first-line {
+                        width: 300px;
+                    }
+                    .demo-first-line::first-line {
+                        font-weight: bold;
+                        color: #530899;
+                    }
+                </style>
+                <p class="demo-first-line">Это очень длинный текст, который точно не поместится в одну строку, потому что мы ограничили ширину контейнера. Первая строка будет выделена, а вторая и следующие — нет.</p>
+                <p style="margin-top: 5px;">✅ Первая строка выделена жирным и фиолетовым, остальные — обычные</p>
+            </div>
+            <div class="lecture-note">
+                📌 <strong>Важно:</strong> <code>::first-line</code> работает только с блочными элементами и зависит от ширины контейнера. Первая строка — это то, что браузер отобразит на первой строке, а не то, что написано на первой строке в HTML-коде.
+            </div>
 
-            <h2>6. Примеры переходов</h2>
-
-            <p><strong>Пример 1: плавное изменение цвета фона при наведении</strong></p>
-            <pre><code>.btn {
-    background-color: #530899;
+            <h2>4. ::selection — выделенный текст</h2>
+            <p>Стилизует текст, который пользователь выделил мышкой.</p>
+            <pre><code>::selection {
+    background-color: #14b8a6;
     color: white;
-    transition: background-color 0.3s ease;
-}
-.btn:hover {
-    background-color: #14b8a6;
 }</code></pre>
             <div class="live-example">
                 <style>
-                    .demo-btn1 {
-                        background-color: #530899;
-                        color: white;
-                        padding: 10px 20px;
-                        border: none;
-                        border-radius: 8px;
-                        cursor: pointer;
-                        transition: background-color 0.3s ease;
-                    }
-                    .demo-btn1:hover {
+                    .demo-selection::selection {
                         background-color: #14b8a6;
-                    }
-                </style>
-                <button class="demo-btn1">Наведи на меня</button>
-                <p style="margin-top: 5px;">✅ При наведении фон плавно меняется с фиолетового на бирюзовый</p>
-            </div>
-
-            <p><strong>Пример 2: плавное увеличение кнопки (transform + transition)</strong></p>
-            <pre><code>.btn {
-    transition: transform 0.2s ease;
-}
-.btn:hover {
-    transform: scale(1.1);
-}</code></pre>
-            <div class="live-example">
-                <style>
-                    .demo-btn2 {
-                        background-color: #530899;
                         color: white;
-                        padding: 10px 20px;
-                        border: none;
-                        border-radius: 8px;
-                        cursor: pointer;
-                        transition: transform 0.2s ease;
-                        display: inline-block;
-                    }
-                    .demo-btn2:hover {
-                        transform: scale(1.1);
                     }
                 </style>
-                <button class="demo-btn2">Наведи на меня</button>
-                <p style="margin-top: 5px;">✅ При наведении кнопка плавно увеличивается</p>
-            </div>
-
-            <p><strong>Пример 3: несколько свойств одновременно</strong></p>
-            <pre><code>.btn {
-    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
-}
-.btn:hover {
-    background-color: #14b8a6;
-    transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}</code></pre>
-            <div class="live-example">
-                <style>
-                    .demo-btn3 {
-                        background-color: #530899;
-                        color: white;
-                        padding: 10px 20px;
-                        border: none;
-                        border-radius: 8px;
-                        cursor: pointer;
-                        transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
-                    }
-                    .demo-btn3:hover {
-                        background-color: #14b8a6;
-                        transform: scale(1.05);
-                        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-                    }
-                </style>
-                <button class="demo-btn3">Наведи на меня</button>
-                <p style="margin-top: 5px;">✅ Меняется цвет, размер и тень — всё плавно</p>
-            </div>
-
-            <p><strong>Пример 4: плавное появление с задержкой</strong></p>
-            <pre><code>.box {
-    opacity: 0.3;
-    transition: opacity 0.5s ease 0.2s;
-}
-.box:hover {
-    opacity: 1;
-}</code></pre>
-            <div class="live-example">
-                <style>
-                    .demo-box {
-                        background-color: #530899;
-                        color: white;
-                        padding: 20px;
-                        border-radius: 8px;
-                        opacity: 0.3;
-                        transition: opacity 0.5s ease 0.2s;
-                    }
-                    .demo-box:hover {
-                        opacity: 1;
-                    }
-                </style>
-                <div class="demo-box">Наведи на меня — появлюсь через 0.2 секунды</div>
-                <p style="margin-top: 5px;">✅ При наведении блок становится полностью видимым с задержкой 0.2 секунды</p>
+                <p class="demo-selection">Попробуй выделить этот текст мышкой. Фон выделения станет бирюзовым, а текст — белым.</p>
+                <p style="margin-top: 5px;">✅ При выделении текст меняет цвета</p>
             </div>
 
             <div class="lecture-note">
-                <strong>📓 Из тетради:</strong> «Переходы делают интерфейс живым и отзывчивым. Не переусердствуйте: 0.2–0.3 секунды — оптимальная длительность для большинства переходов. Слишком долгие анимации раздражают, слишком быстрые — незаметны. И помните: не все свойства можно анимировать (например, `display: none` не анимируется, используйте `opacity` и `visibility`).
+                📌 <strong>Важно:</strong> Псевдоэлементы <code>::before</code> и <code>::after</code> не работают без свойства <code>content</code>. Даже пустое <code>content: "";</code> нужно писать обязательно.
+            </div>
+
+            <div class="lecture-note">
+                <strong>📓 Из тетради:</strong> «Псевдоэлементы — это способ добавлять украшения, не загрязняя HTML. Иконки, подписи, декоративные линии — всё это можно сделать через CSS. Но помните: вставляемый контент не индексируется поисковиками, поэтому важную информацию (цены, ключевые слова) ставьте прямо в HTML».
             </div>
         </div>
 
         <div class="lecture-nav">
-            <a href="/lectures/web/css/lecture-css-18.html" class="prev">← Псевдоэлементы</a>
-            <span class="next disabled">Следующая лекция →</span>
+            <a href="/lectures/web/css/lecture-css-18.html" class="prev">← Псевдоклассы. Часть 2</a>
+            <a href="/lectures/web/css/lecture-css-20.html" class="next">Переходы →</a>
         </div>
     </div>
 
