@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DevSkillRoad — Введение в JavaScript</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-top">
+            <a href="/" class="logo-link">
+                <div class="logo-image"></div>
+            </a>
+            <a href="/" class="title-link">
+                <div class="title">
+                    <h1>DevSkillRoad</h1>
+                </div>
+            </a>
+        </div>
+        
+        <nav class="main-nav">
+            <div class="dropdown">
+                <button class="dropbtn">📖 Лекции HTML</button>
+                <div class="dropdown-content">
+                    <a href="/lectures/web/html/intro-html.html">📖 Введение в HTML</a>
+                    <a href="/lectures/web/html/lecture-html-1.html">Основы HTML</a>
+                    <a href="/lectures/web/html/lecture-html-2.html">Блочные и строчные</a>
+                    <a href="/lectures/web/html/lecture-html-3.html">Заголовки h1–h6</a>
+                    <a href="/lectures/web/html/lecture-html-4.html">Текстовые теги</a>
+                    <a href="/lectures/web/html/lecture-html-5.html">Смысловое выделение</a>
+                    <a href="/lectures/web/html/lecture-html-6.html">Списки</a>
+                    <a href="/lectures/web/html/lecture-html-7.html">Ссылки</a>
+                    <a href="/lectures/web/html/lecture-html-8.html">Изображения</a>
+                    <a href="/lectures/web/html/lecture-html-9.html">Таблицы</a>
+                    <a href="/lectures/web/html/lecture-html-10.html">Формы</a>
+                    <a href="/lectures/web/html/lecture-html-11.html">Семантические теги</a>
+                    <a href="/lectures/web/html/lecture-html-12.html">Медиа</a>
+                    <a href="/lectures/web/html/lecture-html-13.html">Спецсимволы</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">🎨 Лекции CSS</button>
+                <div class="dropdown-content">
+                    <a href="/lectures/web/css/intro-css.html">🎨 Введение в CSS</a>
+                    <a href="/lectures/web/css/lecture-css-1.html">Селекторы</a>
+                    <a href="/lectures/web/css/lecture-css-2.html">Способы задания цвета</a>
+                    <a href="/lectures/web/css/lecture-css-3.html">Свойства цвета</a>
+                    <a href="/lectures/web/css/lecture-css-4.html">Единицы измерения</a>
+                    <a href="/lectures/web/css/lecture-css-5.html">Шрифты и текст</a>
+                    <a href="/lectures/web/css/lecture-css-6.html">Подключение шрифтов</a>
+                    <a href="/lectures/web/css/lecture-css-7.html">Блочная модель</a>
+                    <a href="/lectures/web/css/lecture-css-8.html">Позиционирование</a>
+                    <a href="/lectures/web/css/lecture-css-9.html">Flexbox. Часть 1</a>
+                    <a href="/lectures/web/css/lecture-css-10.html">Flexbox. Часть 2</a>
+                    <a href="/lectures/web/css/lecture-css-11.html">Grid. Часть 1</a>
+                    <a href="/lectures/web/css/lecture-css-12.html">Grid. Часть 2</a>
+                    <a href="/lectures/web/css/lecture-css-13.html">Адаптив</a>
+                    <a href="/lectures/web/css/lecture-css-14.html">Фоны и градиенты</a>
+                    <a href="/lectures/web/css/lecture-css-15.html">Тени и эффекты</a>
+                    <a href="/lectures/web/css/lecture-css-16.html">Трансформации</a>
+                    <a href="/lectures/web/css/lecture-css-17.html">Псевдоклассы. Часть 1</a>
+                    <a href="/lectures/web/css/lecture-css-18.html">Псевдоклассы. Часть 2</a>
+                    <a href="/lectures/web/css/lecture-css-19.html">Псевдоэлементы</a>
+                    <a href="/lectures/web/css/lecture-css-20.html">Переходы</a>
+                    <a href="/lectures/web/css/lecture-css-21.html">Анимации</a>
+                    <a href="/lectures/web/css/lecture-css-22.html">Дополнительные свойства</a>
+                    <a href="/lectures/web/css/lecture-css-23.html">CSS-переменные</a>
+                    <a href="/lectures/web/css/lecture-css-24.html">Фильтры и эффекты</a>
+                    <a href="/lectures/web/css/lecture-css-25.html">Современные функции</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="content">
+        <div class="lecture-nav">
+            <a href="/lectures/web/css/lecture-css-25.html" class="prev">← Современные функции</a>
+            <a href="/lectures/web/javascript/lecture-js-1.html" class="next">Переменные →</a>
+        </div>
+
+        <h1 class="lecture-title">Введение в JavaScript</h1>
+        
+        <div class="lecture-meta">
+            🟡 Что такое JS, где выполняется, как подключить
+        </div>
+
+        <div class="lecture-content">
+            <p><strong>JavaScript (JS)</strong> — это язык программирования, который делает сайты интерактивными. Если HTML — это структура, а CSS — внешность, то JavaScript — это поведение: реакции на клики, отправка форм, подгрузка данных без перезагрузки страницы, анимации и многое другое.</p>
+
+            <h2>1. Что может JavaScript?</h2>
+            <ul>
+                <li>Реагировать на действия пользователя (клики, движения мыши, нажатия клавиш)</li>
+                <li>Изменять содержимое страницы (текст, картинки, стили) без перезагрузки</li>
+                <li>Отправлять запросы на сервер и получать данные (API, fetch)</li>
+                <li>Хранить данные в браузере (localStorage, cookies)</li>
+                <li>Создавать анимации и игры</li>
+            </ul>
+
+            <h2>2. Где выполняется JavaScript?</h2>
+            <p>Раньше JavaScript выполнялся только в браузере. Сейчас его можно запускать где угодно:</p>
+            <ul>
+                <li><strong>В браузере</strong> — самый частый случай. JS-код встроен в веб-страницу и выполняется на компьютере пользователя.</li>
+                <li><strong>На сервере (Node.js)</strong> — можно писать серверную часть на JavaScript.</li>
+                <li><strong>В мобильных приложениях (React Native)</strong> — писать приложения для телефонов.</li>
+                <li><strong>В десктопных приложениях (Electron)</strong> — например, VS Code написан на JavaScript.</li>
+            </ul>
+
+            <h2>3. Как подключить JavaScript к странице?</h2>
+
+            <h3>Внешний файл (рекомендуется)</h3>
+            <p>JS-код лежит в отдельном файле с расширением <code>.js</code>. В HTML подключается через тег <code>&lt;script&gt;</code>.</p>
+            <pre><code>&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+
+            <h3>Внутренний скрипт (тег &lt;script&gt;)</h3>
+            <p>JS-код пишется прямо внутри HTML в теге <code>&lt;script&gt;</code>. Подходит для маленьких примеров.</p>
+            <pre><code>&lt;script&gt;
+    alert('Привет, мир!');
+&lt;/script&gt;</code></pre>
+
+            <h3>Инлайновый (в атрибутах) — не рекомендуется</h3>
+            <p>JS-код пишется прямо в HTML-атрибутах (<code>onclick</code>, <code>onmouseover</code>). Это плохая практика.</p>
+            <pre><code>&lt;button onclick="alert('Привет')"&gt;Нажми&lt;/button&gt;</code></pre>
+
+            <div class="lecture-note">
+                📌 <strong>Где размещать тег &lt;script&gt;?</strong>
+                <ul>
+                    <li>Раньше его ставили в <code>&lt;head&gt;</code>, но это замедляло загрузку страницы.</li>
+                    <li>Сейчас лучше ставить <strong>перед закрывающим тегом <code>&lt;/body&gt;</code></strong> — тогда страница сначала отрисуется, а потом загрузится и выполнится JS.</li>
+                    <li>Современное решение: <code>&lt;script defer&gt;</code> или <code>&lt;script async&gt;</code> — их можно ставить и в <code>&lt;head&gt;</code>.</li>
+                </ul>
+            </div>
+
+            <h2>4. Первая программа: alert</h2>
+            <p>Функция <code>alert()</code> показывает всплывающее окно с сообщением.</p>
+            <pre><code>alert('Привет, мир!');</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-alert-btn {
+                        background: #530899;
+                        color: white;
+                        padding: 10px 20px;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                    }
+                </style>
+                <button class="demo-alert-btn" onclick="alert('Привет, мир!')">Нажми на меня</button>
+                <p style="margin-top: 5px;">✅ При нажатии появляется всплывающее окно</p>
+            </div>
+
+            <h2>5. Вывод в консоль: console.log</h2>
+            <p>Функция <code>console.log()</code> выводит сообщение в консоль браузера. Используется для отладки.</p>
+            <pre><code>console.log('Привет, консоль!');</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-console-btn {
+                        background: #14b8a6;
+                        color: white;
+                        padding: 10px 20px;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                    }
+                </style>
+                <button class="demo-console-btn" onclick="console.log('Привет, консоль!')">Нажми и посмотри в консоль</button>
+                <p style="margin-top: 5px;">✅ Откройте консоль браузера (F12 → Console) и нажмите на кнопку</p>
+            </div>
+
+            <h2>6. Консоль браузера</h2>
+            <p>Консоль — это инструмент разработчика, где можно:</p>
+            <ul>
+                <li>Выполнять JS-код в реальном времени</li>
+                <li>Видеть ошибки и предупреждения</li>
+                <li>Отлаживать скрипты</li>
+            </ul>
+            <p><strong>Как открыть консоль:</strong> Нажмите <code>F12</code> (или <code>Ctrl+Shift+I</code>), затем выберите вкладку «Console».</p>
+            <div class="lecture-note">
+                📌 Попробуйте прямо сейчас: откройте консоль и введите <code>alert('Привет!')</code> или <code>2 + 2</code>. Это живой JavaScript!
+            </div>
+
+            <div class="lecture-note">
+                <strong>📓 Из тетради:</strong> «JavaScript — это мост между пользователем и сайтом. Он делает страницу живой. Но помните: JS — это полноценный язык программирования. Учите его так же серьёзно, как и любой другой язык. Начните с малого: научитесь открывать консоль и выводить сообщения. Это первый шаг».
+            </div>
+        </div>
+
+        <div class="lecture-nav">
+            <a href="/lectures/web/css/lecture-css-25.html" class="prev">← Современные функции</a>
+            <a href="/lectures/web/javascript/lecture-js-1.html" class="next">Переменные →</a>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <p>📝 Весь контент — мои личные записи, комментарии и шпаргалки. Я не копирайтер, я практик.</p>
+    </div>
+</body>
+
+</html>
