@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DevSkillRoad — Переменные в JavaScript</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-top">
+            <a href="/" class="logo-link">
+                <div class="logo-image"></div>
+            </a>
+            <a href="/" class="title-link">
+                <div class="title">
+                    <h1>DevSkillRoad</h1>
+                </div>
+            </a>
+        </div>
+        
+        <nav class="main-nav">
+            <div class="dropdown">
+                <button class="dropbtn">📖 Лекции HTML</button>
+                <div class="dropdown-content">
+                    <a href="/lectures/web/html/intro-html.html">📖 Введение в HTML</a>
+                    <a href="/lectures/web/html/lecture-html-1.html">Основы HTML</a>
+                    <a href="/lectures/web/html/lecture-html-2.html">Блочные и строчные</a>
+                    <a href="/lectures/web/html/lecture-html-3.html">Заголовки h1–h6</a>
+                    <a href="/lectures/web/html/lecture-html-4.html">Текстовые теги</a>
+                    <a href="/lectures/web/html/lecture-html-5.html">Смысловое выделение</a>
+                    <a href="/lectures/web/html/lecture-html-6.html">Списки</a>
+                    <a href="/lectures/web/html/lecture-html-7.html">Ссылки</a>
+                    <a href="/lectures/web/html/lecture-html-8.html">Изображения</a>
+                    <a href="/lectures/web/html/lecture-html-9.html">Таблицы</a>
+                    <a href="/lectures/web/html/lecture-html-10.html">Формы</a>
+                    <a href="/lectures/web/html/lecture-html-11.html">Семантические теги</a>
+                    <a href="/lectures/web/html/lecture-html-12.html">Медиа</a>
+                    <a href="/lectures/web/html/lecture-html-13.html">Спецсимволы</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">🎨 Лекции CSS</button>
+                <div class="dropdown-content">
+                    <a href="/lectures/web/css/intro-css.html">🎨 Введение в CSS</a>
+                    <a href="/lectures/web/css/lecture-css-1.html">Селекторы</a>
+                    <a href="/lectures/web/css/lecture-css-2.html">Способы задания цвета</a>
+                    <a href="/lectures/web/css/lecture-css-3.html">Свойства цвета</a>
+                    <a href="/lectures/web/css/lecture-css-4.html">Единицы измерения</a>
+                    <a href="/lectures/web/css/lecture-css-5.html">Шрифты и текст</a>
+                    <a href="/lectures/web/css/lecture-css-6.html">Подключение шрифтов</a>
+                    <a href="/lectures/web/css/lecture-css-7.html">Блочная модель</a>
+                    <a href="/lectures/web/css/lecture-css-8.html">Позиционирование</a>
+                    <a href="/lectures/web/css/lecture-css-9.html">Flexbox. Часть 1</a>
+                    <a href="/lectures/web/css/lecture-css-10.html">Flexbox. Часть 2</a>
+                    <a href="/lectures/web/css/lecture-css-11.html">Grid. Часть 1</a>
+                    <a href="/lectures/web/css/lecture-css-12.html">Grid. Часть 2</a>
+                    <a href="/lectures/web/css/lecture-css-13.html">Адаптив</a>
+                    <a href="/lectures/web/css/lecture-css-14.html">Фоны и градиенты</a>
+                    <a href="/lectures/web/css/lecture-css-15.html">Тени и эффекты</a>
+                    <a href="/lectures/web/css/lecture-css-16.html">Трансформации</a>
+                    <a href="/lectures/web/css/lecture-css-17.html">Псевдоклассы. Часть 1</a>
+                    <a href="/lectures/web/css/lecture-css-18.html">Псевдоклассы. Часть 2</a>
+                    <a href="/lectures/web/css/lecture-css-19.html">Псевдоэлементы</a>
+                    <a href="/lectures/web/css/lecture-css-20.html">Переходы</a>
+                    <a href="/lectures/web/css/lecture-css-21.html">Анимации</a>
+                    <a href="/lectures/web/css/lecture-css-22.html">Дополнительные свойства</a>
+                    <a href="/lectures/web/css/lecture-css-23.html">CSS-переменные</a>
+                    <a href="/lectures/web/css/lecture-css-24.html">Фильтры и эффекты</a>
+                    <a href="/lectures/web/css/lecture-css-25.html">Современные функции</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="content">
+        <div class="lecture-nav">
+            <a href="/lectures/web/javascript/intro-js.html" class="prev">← Введение в JS</a>
+            <a href="/lectures/web/javascript/lecture-js-2.html" class="next">Типы данных →</a>
+        </div>
+
+        <h1 class="lecture-title">Переменные в JavaScript</h1>
+        
+        <div class="lecture-meta">
+            📦 var, let, const, область видимости
+        </div>
+
+        <div class="lecture-content">
+            <p>Переменные — это контейнеры для хранения данных. В JavaScript переменные объявляются с помощью ключевых слов <code>var</code>, <code>let</code> или <code>const</code>.</p>
+
+            <h2>1. Что такое переменная?</h2>
+            <p>Переменная — это именованное место в памяти, где хранится какое-то значение.</p>
+            <pre><code>let name = 'Иван';
+let age = 25;
+console.log(name); // Иван
+console.log(age);  // 25</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-var-btn {
+                        background: #530899;
+                        color: white;
+                        padding: 10px 20px;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                    }
+                </style>
+                <button class="demo-var-btn" onclick="let name = 'Иван'; alert('Имя: ' + name)">Показать переменную</button>
+                <p style="margin-top: 5px;">✅ При нажатии создаётся переменная и выводится её значение</p>
+            </div>
+
+            <h2>2. let — изменяемая переменная</h2>
+            <p><code>let</code> используется для переменных, значение которых может меняться.</p>
+            <p>При каждом нажатии на кнопку код внутри <code>onclick</code> выполняется заново. Переменная <code>count</code> создаётся каждый раз и получает значение 0, затем увеличивается на 1. Поэтому результат всегда будет 1.</p>
+            <pre><code>// При каждом клике:
+let count = 0;   // переменная создаётся заново
+count = count + 1;  // становится 1
+alert(count);    // всегда 1</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-let-local {
+                        background: #530899;
+                        color: white;
+                        padding: 10px 20px;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                    }
+                </style>
+                <button class="demo-let-local" onclick="let count = 0; count = count + 1; alert('count = ' + count)">Увеличить count</button>
+                <p style="margin-top: 5px;">✅ При каждом клике count = 1 (переменная создаётся заново)</p>
+            </div>
+
+            <h2>3. const — неизменяемая переменная (константа)</h2>
+            <p><code>const</code> используется для значений, которые не должны меняться. Попытка изменить <code>const</code> вызовет ошибку.</p>
+            <pre><code>const PI = 3.14159;
+PI = 3.14; // ❌ Ошибка! Нельзя изменить константу</code></pre>
+            <p><strong>Где увидеть ошибку?</strong> Откройте консоль браузера (F12 → Console). При попытке изменить <code>const</code> там появится красное сообщение: <code>TypeError: Assignment to constant variable</code>.</p>
+            <div class="live-example">
+                <style>
+                    .demo-const-error {
+                        background: #14b8a6;
+                        color: white;
+                        padding: 10px 20px;
+                        border: none;
+                        border-radius: 8px;
+                        cursor: pointer;
+                    }
+                </style>
+                <button class="demo-const-error" onclick="const PI = 3.14159; PI = 3.14; alert('Это сообщение не появится')">Попробовать изменить константу</button>
+                <p style="margin-top: 5px;">✅ При нажатии на кнопку произойдёт ошибка. Откройте консоль (F12 → Console), чтобы увидеть красное сообщение об ошибке.</p>
+                <div class="lecture-note">
+                    📌 <strong>Почему это важно:</strong> Консоль — лучший друг разработчика. Все ошибки JavaScript пишутся в консоль. Научитесь её открывать и читать ошибки — это первый шаг к отладке.
+                </div>
+            </div>
+
+            <h2>4. var — старый способ (не рекомендуется)</h2>
+            <p><code>var</code> — устаревший способ объявления переменных. У него есть особенности, которые могут привести к ошибкам. В современном JavaScript его не используют.</p>
+            <pre><code>var oldVariable = 'старый стиль';</code></pre>
+            <div class="lecture-note">
+                📌 <strong>Правило:</strong> Используйте <code>const</code> по умолчанию. Если значение должно меняться — используйте <code>let</code>. <code>var</code> не используйте никогда.
+            </div>
+
+            <h2>5. Правила именования переменных</h2>
+            <ul>
+                <li>Имя может содержать буквы, цифры, символы <code>$</code> и <code>_</code></li>
+                <li>Имя не может начинаться с цифры</li>
+                <li>Имя чувствительно к регистру (<code>myVar</code> и <code>myvar</code> — разные переменные)</li>
+                <li>Используйте осмысленные имена (<code>userName</code>, а не <code>x</code>)</li>
+                <li>Для имён из нескольких слов используйте <strong>camelCase</strong>: <code>firstName</code>, <code>userAge</code></li>
+            </ul>
+
+            <div class="lecture-note">
+                <strong>📓 Из тетради:</strong> «Переменные — это основа любого языка. Запомните: const если значение не меняется, let если меняется. var — забудьте. Называйте переменные так, чтобы через полгода вы сами поняли, что там хранится».
+            </div>
+        </div>
+
+        <div class="lecture-nav">
+            <a href="/lectures/web/javascript/intro-js.html" class="prev">← Введение в JS</a>
+            <a href="/lectures/web/javascript/lecture-js-2.html" class="next">Типы данных →</a>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <p>📝 Весь контент — мои личные записи, комментарии и шпаргалки. Я не копирайтер, я практик.</p>
+    </div>
+</body>
+
+</html>
