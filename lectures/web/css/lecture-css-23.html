@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DevSkillRoad — CSS-переменные</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-top">
+            <a href="/" class="logo-link">
+                <div class="logo-image"></div>
+            </a>
+            <a href="/" class="title-link">
+                <div class="title">
+                    <h1>DevSkillRoad</h1>
+                </div>
+            </a>
+        </div>
+
+        <nav class="main-nav">
+            <div class="dropdown">
+                <button class="dropbtn">📚 Лекции HTML</button>
+                <div class="dropdown-content">
+                    <a href="/lectures/web/html/intro-html.html">📖 Введение в HTML</a>
+                    <a href="/lectures/web/html/lecture-html-1.html">Основы HTML</a>
+                    <a href="/lectures/web/html/lecture-html-2.html">Блочные и строчные</a>
+                    <a href="/lectures/web/html/lecture-html-3.html">Заголовки h1–h6</a>
+                    <a href="/lectures/web/html/lecture-html-4.html">Текстовые теги</a>
+                    <a href="/lectures/web/html/lecture-html-5.html">Смысловое выделение</a>
+                    <a href="/lectures/web/html/lecture-html-6.html">Списки</a>
+                    <a href="/lectures/web/html/lecture-html-7.html">Ссылки</a>
+                    <a href="/lectures/web/html/lecture-html-8.html">Изображения</a>
+                    <a href="/lectures/web/html/lecture-html-9.html">Таблицы</a>
+                    <a href="/lectures/web/html/lecture-html-10.html">Формы</a>
+                    <a href="/lectures/web/html/lecture-html-11.html">Семантические теги</a>
+                    <a href="/lectures/web/html/lecture-html-12.html">Медиа</a>
+                    <a href="/lectures/web/html/lecture-html-13.html">Спецсимволы</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="content">
+        <div class="lecture-nav">
+            <a href="/lectures/web/css/lecture-css-22.html" class="prev">← Дополнительные свойства</a>
+            <a href="/lectures/web/css/lecture-css-24.html" class="next">Фильтры и эффекты →</a>
+        </div>
+
+        <h1 class="lecture-title">CSS-переменные</h1>
+
+        <div class="lecture-meta">
+            🎨 var(), :root, наследование, переопределение
+        </div>
+
+        <div class="lecture-content">
+            <p>CSS-переменные (также известны как кастомные свойства) позволяют хранить значения в одном месте и
+                переиспользовать их по всему документу.</p>
+
+            <h2>1. Что такое CSS-переменные</h2>
+            <p>Это значения, которые можно сохранить под именем и потом использовать многократно. Имена переменных
+                начинаются с двух дефисов <code>--</code>.</p>
+            <pre><code>:root {
+    --main-color: #530899;
+    --secondary-color: #14b8a6;
+    --padding: 20px;
+}
+
+.button {
+    background-color: var(--main-color);
+    padding: var(--padding);
+}</code></pre>
+
+            <h2>2. Объявление переменных — :root</h2>
+            <p>Обычно переменные объявляют внутри <code>:root</code> — это псевдокласс, который соответствует корневому
+                элементу документа (<code>&lt;html&gt;</code>). Переменные, объявленные в <code>:root</code>, доступны
+                на всей странице.</p>
+            <pre><code>:root {
+    --primary: #530899;
+    --secondary: #14b8a6;
+}</code></pre>
+
+            <h2>3. Использование переменных — var()</h2>
+            <p>Функция <code>var()</code> подставляет значение переменной. Можно указать запасное значение на случай,
+                если переменная не определена.</p>
+            <pre><code>.element {
+    color: var(--demo-primary, #000000);
+    background-color: var(--demo-secondary, #ffffff);
+}</code></pre>
+            <div class="live-example">
+                <style>
+                    :root {
+                        --demo-primary: #530899;
+                        --demo-secondary: #14b8a6;
+                    }
+
+                    .demo-var {
+                        color: white;
+                        background-color: var(--demo-primary);
+                        padding: 15px;
+                        border-radius: 8px;
+                    }
+                </style>
+                <div class="demo-var">Цвет фона задан через переменную --demo-primary</div>
+                <p style="margin-top: 5px;">✅ Переменная работает на всей странице</p>
+            </div>
+
+            <h2>4. Наследование переменных</h2>
+            <p>Переменные наследуются: если задать переменную на родителе, она будет доступна всем потомкам.</p>
+            <pre><code>.parent {
+    --text-color: #14b8a6;
+}
+.child {
+    color: var(--text-color);
+}</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-parent {
+                        --demo-text: #14b8a6;
+                        padding: 15px;
+                        background: #f0f0f0;
+                        border-radius: 8px;
+                    }
+
+                    .demo-child {
+                        color: var(--demo-text);
+                        font-weight: bold;
+                    }
+                </style>
+                <div class="demo-parent">
+                    Родитель
+                    <div class="demo-child">Дочерний элемент (цвет через переменную от родителя)</div>
+                </div>
+                <p style="margin-top: 5px;">✅ Переменная, заданная на родителе, доступна потомку</p>
+            </div>
+
+            <h2>5. Переопределение переменных</h2>
+            <p>Переменные можно переопределять внутри конкретных элементов. Это удобно для создания тем и вариаций.</p>
+            <pre><code>:root {
+    --color: #530899;
+}
+.button {
+    background-color: var(--color);
+}
+.button.secondary {
+    --color: #14b8a6;  /* переопределяем */
+}</code></pre>
+            <div class="live-example">
+                <style>
+                    :root {
+                        --demo-btn-color: #530899;
+                    }
+
+                    .demo-btn {
+                        background-color: var(--demo-btn-color);
+                        color: white;
+                        padding: 10px 20px;
+                        border: none;
+                        border-radius: 8px;
+                        margin: 5px;
+                        cursor: pointer;
+                    }
+
+                    .demo-btn.secondary {
+                        --demo-btn-color: #14b8a6;
+                    }
+
+                    .demo-btn.warning {
+                        --demo-btn-color: #ffc107;
+                        color: black;
+                    }
+                </style>
+                <button class="demo-btn">Основная кнопка</button>
+                <button class="demo-btn secondary">Вторичная кнопка</button>
+                <button class="demo-btn warning">Предупреждение</button>
+                <p style="margin-top: 5px;">✅ Один класс кнопки, разные цвета через переопределение переменной</p>
+            </div>
+
+            <h2>6. Пример использования: темы оформления</h2>
+            <p>С помощью CSS-переменных можно легко создать светлую и тёмную тему. Переменные задаются в разных классах,
+                а переключение темы происходит через JavaScript.</p>
+
+            <pre><code>:root {
+    --bg: white;
+    --text: black;
+}
+.dark-theme {
+    --bg: #1a1a1a;
+    --text: white;
+}
+body {
+    background-color: var(--bg);
+    color: var(--text);
+}</code></pre>
+
+            <p><strong>Как переключать тему:</strong> При нажатии на кнопку JavaScript добавляет класс
+                <code>dark-theme</code> к элементу <code>&lt;body&gt;</code> (или удаляет его). Все переменные
+                автоматически обновятся, так как CSS-переменные наследуются.</p>
+
+            <div class="live-example">
+                <style>
+                    .demo-light {
+                        --demo-bg: #f0f0f0;
+                        --demo-text: #333;
+                        background-color: var(--demo-bg);
+                        color: var(--demo-text);
+                        padding: 15px;
+                        border-radius: 8px;
+                        transition: 0.3s;
+                    }
+
+                    .demo-light.dark {
+                        --demo-bg: #333;
+                        --demo-text: #f0f0f0;
+                    }
+                </style>
+                <div class="demo-light" id="theme-demo">
+                    <p>Это демонстрация темы. Нажмите на кнопку, чтобы переключить.</p>
+                    <button onclick="document.getElementById('theme-demo').classList.toggle('dark')"
+                        style="padding: 5px 10px; cursor: pointer;">
+                        Переключить тему
+                    </button>
+                </div>
+                <p style="margin-top: 5px;">✅ При нажатии на кнопку JavaScript добавляет/удаляет класс, и CSS-переменные
+                    меняют цвета</p>
+                <div class="lecture-note">
+                    📌 <strong>Подробнее про JavaScript:</strong> Мы разберём, как менять классы элементов через JS, в
+                    разделе про JavaScript. Пока просто запомните: смена темы — это задача и для CSS (переменные), и для
+                    JS (переключение классов).
+                </div>
+            </div>
+
+            <div class="lecture-note">
+                📌 <strong>Зачем нужны переменные:</strong>
+                <ul>
+                    <li>Не повторять одни и те же значения (цвета, отступы, шрифты)</li>
+                    <li>Легко менять дизайн в одном месте</li>
+                    <li>Создавать темы оформления (светлая/тёмная)</li>
+                    <li>Упрощать поддержку кода</li>
+                </ul>
+            </div>
+
+            <div class="lecture-note">
+                <strong>📓 Из тетради:</strong> «CSS-переменные — это как найти и заменить во всём файле, но умнее. Один
+                раз задал цвет, и он везде изменится. Используйте их для цветовой схемы, отступов, радиусов скругления.
+                А если нужно переопределить для отдельного компонента — просто задайте переменную заново прямо в его
+                классе».
+            </div>
+        </div>
+
+        <div class="lecture-nav">
+            <a href="/lectures/web/css/lecture-css-22.html" class="prev">← Дополнительные свойства</a>
+            <a href="/lectures/web/css/lecture-css-24.html" class="next">Фильтры и эффекты →</a>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <p>📝 Весь контент — мои личные записи, комментарии и шпаргалки. Я не копирайтер, я практик.</p>
+    </div>
+</body>
+
+</html>
