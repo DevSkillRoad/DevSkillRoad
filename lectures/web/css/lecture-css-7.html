@@ -82,9 +82,11 @@
             <p>Задают ширину и высоту элемента. <strong>Как именно они работают, зависит от свойства
                     <code>box-sizing</code></strong> (см. раздел 6).</p>
             <p>По умолчанию (<code>content-box</code>) <code>width</code> задаёт только ширину содержимого.
-                <code>padding</code> и <code>border</code> добавляются сверху.</p>
+                <code>padding</code> и <code>border</code> добавляются сверху.
+            </p>
             <p>При <code>border-box</code> <code>width</code> включает в себя <code>padding</code> и
-                <code>border</code>.</p>
+                <code>border</code>.
+            </p>
             <p><strong>Возможные значения:</strong></p>
             <ul>
                 <li><code>px</code> — пиксели</li>
@@ -282,18 +284,98 @@
                 📌 <strong>Совет:</strong> Многие разработчики используют глобальное правило
                 <code>* { box-sizing: border-box; }</code>, чтобы все элементы считали размеры предсказуемо.
             </div>
+            
+            <h2>8. display — как элемент ведёт себя на странице</h2>
+            <p>В HTML у каждого элемента есть тип по умолчанию: блочный (<code>&lt;div&gt;</code>,
+                <code>&lt;p&gt;</code>) или строчный (<code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>). Свойство
+                <code>display</code> позволяет изменить это поведение.</p>
+            <p><strong>Возможные значения:</strong></p>
+            <ul>
+                <li><code>block</code> — элемент занимает всю ширину родителя, переносит строку до и после себя</li>
+                <li><code>inline</code> — элемент располагается в строке, ширина по содержимому, нельзя задать
+                    width/height</li>
+                <li><code>inline-block</code> — как <code>inline</code>, но можно задать width/height и отступы</li>
+                <li><code>none</code> — полностью удаляет элемент со страницы (место исчезает)</li>
+                <li><code>flex</code> — делает элемент флекс-контейнером (будет в лекции 9)</li>
+                <li><code>grid</code> — делает элемент грид-контейнером (будет в лекции 11)</li>
+            </ul>
+
+            <p><strong>inline-block — когда нужен</strong></p>
+            <p>Представьте меню из кнопок, которые должны стоять в строку, но иметь фиксированную ширину и отступы. Без
+                <code>display: inline-block</code> пришлось бы использовать Flexbox или обходить костылями.</p>
+            <pre><code>.menu-item {
+    display: inline-block;
+    width: 120px;
+    padding: 10px;
+    text-align: center;
+}</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-inline-block {
+                        display: inline-block;
+                        width: 100px;
+                        background: #530899;
+                        color: white;
+                        padding: 10px;
+                        text-align: center;
+                        border-radius: 8px;
+                        margin: 5px;
+                    }
+                </style>
+                <div class="demo-inline-block">Главная</div>
+                <div class="demo-inline-block">О нас</div>
+                <div class="demo-inline-block">Контакты</div>
+                <p style="margin-top: 5px;">✅ Элементы в строке, но имеют фиксированную ширину</p>
+            </div>
+
+            <p><strong>none — полное удаление элемента</strong></p>
+            <p>В отличие от <code>visibility: hidden</code>, который скрывает элемент, но оставляет место,
+                <code>display: none</code> полностью убирает элемент из потока.</p>
+            <pre><code>.hidden {
+    display: none;
+}</code></pre>
+            <div class="live-example">
+                <style>
+                    .demo-none {
+                        display: none;
+                    }
+
+                    .demo-visibility {
+                        visibility: hidden;
+                    }
+                </style>
+                <div>Текст перед</div>
+                <div class="demo-none">display: none (не виден и места нет)</div>
+                <div>Текст после</div>
+                <hr>
+                <div>Текст перед</div>
+                <div class="demo-visibility">visibility: hidden (не виден, но место есть)</div>
+                <div>Текст после</div>
+                <p style="margin-top: 5px;">✅ <code>display: none</code> — элемент и его место исчезают.
+                    <code>visibility: hidden</code> — элемент не виден, но место остаётся.</p>
+            </div>
 
             <div class="lecture-note">
-                <strong>📓 Из тетради:</strong> «Блочная модель — это фундамент вёрстки. Поймите разницу между padding и
-                margin, научитесь считать реальные размеры. И всегда помните про box-sizing: border-box — он спасёт вас
-                от неожиданных расползаний верстки».
+                📌 <strong>Когда менять display:</strong>
+                <ul>
+                    <li>Сделать меню из блоков в строку — <code>display: inline-block</code></li>
+                    <li>Временно скрыть элемент, чтобы он не занимал место — <code>display: none</code></li>
+                    <li>Скрыть элемент, но сохранить место — <code>visibility: hidden</code></li>
+                    <li>Создать гибкую раскладку — <code>display: flex</code> или <code>display: grid</code></li>
+                </ul>
             </div>
+
         </div>
 
-        <div class="lecture-nav">
-            <a href="/lectures/web/css/lecture-css-6.html" class="prev">← Подключение шрифтов</a>
-            <a href="/lectures/web/css/lecture-css-8.html" class="next">Позиционирование →</a>
+        <div class="lecture-note">
+            <strong>📓 Из тетради:</strong> «Блочная модель — это фундамент вёрстки. Поймите разницу между padding и margin, научитесь считать реальные размеры. Всегда используйте box-sizing: border-box — он избавит от неожиданных расползаний верстки. А свойство display позволяет менять правила игры: превращать строчный элемент в блочный, скрывать блоки или создавать гибкие сетки».
         </div>
+    </div>
+
+    <div class="lecture-nav">
+        <a href="/lectures/web/css/lecture-css-6.html" class="prev">← Подключение шрифтов</a>
+        <a href="/lectures/web/css/lecture-css-8.html" class="next">Позиционирование →</a>
+    </div>
     </div>
 
     <div class="footer-note">
